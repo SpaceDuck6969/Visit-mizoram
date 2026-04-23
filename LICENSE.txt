@@ -1,5 +1,3 @@
-Slides 7–9 (Revised Honest + Strong Version)
-
 “Now, let’s look at the core features of our platform — the part that makes Visit Mizoram smart, adaptive, and safe.
 
 First, we have Smart Trip Planning.
