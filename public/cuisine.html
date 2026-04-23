@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mizo Cuisine | Visit Mizoram</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/cuisine.css"/>
+    <script src="js/session.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/page-transition.js" defer></script>
+    <script src="js/navbar-search.js" defer></script>
+</head>
+
+<body>
+    <header id="main-header" class="site-header">
+        <nav class="site-nav">
+            <a href="index.html"><div class="site-brand">Visit Mizoram</div></a>
+            
+            <div class="site-nav-links">
+                <button id="destinations-trigger" class="nav-dropdown-trigger" type="button">
+                    <span class="nav-dropdown-label">Destinations</span>
+                    <span id="dest-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+                </button>
+
+                <button id="explore-trigger" class="nav-dropdown-trigger" type="button">
+                    <span class="nav-dropdown-label">Explore</span>
+                    <span id="explore-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+                </button>
+
+                <a class="top-nav-link" href="plan-trip/index.html">Plan Trip</a>
+                <a class="top-nav-link" href="safety.html">Safety</a>
+                <a class="top-nav-link" href="stays.html">Stay</a>
+            </div>
+
+            <div class="site-nav-actions" id="auth-container">
+                <button id="back-btn" class="back-btn">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </button>
+                <div class="nav-search-container">
+                    <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                    <button id="nav-search-btn" class="nav-search-btn">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <div id="search-results" class="search-results-dropdown"></div>
+                </div>
+                <a href="login.html" id="join-btn" class="join-btn" style="text-decoration: none;">Join</a>
+
+                <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                    <button id="user-dropdown-btn" class="user-dropdown-btn">
+                        <span class="material-symbols-outlined">account_circle</span>
+                        <span id="nav-username">Traveler</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    
+                    <div id="user-dropdown-content" class="user-dropdown-content">
+                        <a href="#" id="logout-btn">
+                            <span class="material-symbols-outlined">logout</span> 
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="destinations-menu" class="destinations-menu">
+            <div class="destinations-menu-inner">
+                <div class="destinations-filter-bar">
+                    <button class="filter-btn dest-filter-btn" data-filter="hill-stations">Hill stations</button>
+                    <button class="filter-btn dest-filter-btn" data-filter="waterfalls">Waterfalls/Lakes</button>
+                    <button class="filter-btn dest-filter-btn" data-filter="districts">Districts</button>
+                </div>
+                <div class="dest-grid" id="dest-grid">
+                    <div class="dest-card dest-card-item" data-category="hill-stations">
+                        <a href="destinations/reiek/reiek.html">
+                            <div class="dest-card-shell">
+                                <div><img src="images/hill-station image/Reiek.jpg" class="dest-card-image" alt="Reiek"></div>
+                                <div class="dest-card-title-wrap"><h4 class="dest-card-title">Reiek</h4></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dest-card dest-card-item" data-category="hill-stations">
+                        <a href="destinations/hmuifang/hmuifang.html">
+                            <div class="dest-card-shell">
+                                <div><img src="destinations/hmuifang/Hmuifang.jpg" class="dest-card-image" alt="Hmuifang"></div>
+                                <div class="dest-card-title-wrap"><h4 class="dest-card-title">Hmuifang</h4></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dest-card dest-card-item" data-category="hill-stations">
+                        <a href="destinations/phawngpui/phawngpui.html">
+                            <div class="dest-card-shell">
+                                <div><img src="images/hill-station image/phawngpui.webp" class="dest-card-image" alt="Phawngpui"></div>
+                                <div class="dest-card-title-wrap"><h4 class="dest-card-title">Phawngpui</h4></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dest-card dest-card-item" data-category="hill-stations">
+                        <a href="destinations/sakawrhmuituai/sakawrhmuituai.html">
+                            <div class="dest-card-shell">
+                                <div><img src="destinations/sakawrhmuituai/sakawrr.jpg" class="dest-card-image" alt="Sakawrhmuituai"></div>
+                                <div class="dest-card-title-wrap"><h4 class="dest-card-title">Sakawrhmuituai</h4></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="explore-menu" class="destinations-menu">
+            <div class="destinations-menu-inner explore-menu-inner">
+                <div class="explore-columns">
+                    <a class="explore-column" href="guideline.html">
+                        <div class="explore-img-wrapper">
+                            <img src="images/travel guideline.png" alt="Travel Guideline">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Travel Guideline</h4>
+                            <p class="explore-column-text">Check official travel guidance and practical tips.</p>
+                        </div>
+                    </a>
+                    <a class="explore-column" href="heritage.html">
+                        <div class="explore-img-wrapper">
+                            <img src="cultural dress/Puanchei.png" alt="Cultural and Heritage">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Cultural and Heritage</h4>
+                            <p class="explore-column-text">Discover traditions and heritage stories.</p>
+                        </div>
+                    </a>
+                    <a class="explore-column" href="cuisine.html">
+                        <div class="explore-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtfYDi0rrWcHcJulzaAxYMytlR2Mk-c2GlavnGj6c57kCbm-P8M2fFDmAm0SH_tmtcMp9kNnsx0LOr12Huf5WzeRXWqTVU7Adk-6ak-WDMf3est6MQIJu4rvFPv75ZkuSTE9n-YcLAZLdHvvH3ymbFpKQXN65wwp7hSYVpTYkKRdIfAXzD07_GQ2v443JryHGJYg1eTHZKGwCfc_l5Giu59bzzDWiPbrnVVrs95vmO_jIikBkFIGeeG75_6jaW9Bva7t8Q72-AqHo" alt="Mizo Cuisine">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Mizo Cuisine</h4>
+                            <p class="explore-column-text">Explore local flavors and food experiences.</p>
+                        </div>
+                    </a>
+                    <a class="explore-column explore-column--safety" href="safety.html">
+                        <div class="explore-img-wrapper explore-img-wrapper--safety">
+                            <span class="material-symbols-outlined explore-safety-icon">health_and_safety</span>
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Safety & Emergency</h4>
+                            <p class="explore-column-text">Emergency numbers and practical tips.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="cuisine-hero">
+            <div class="section-container cuisine-hero-inner">
+                <span class="section-kicker" style="color: #d3eca2;">Flavors of the Hills</span>
+                <h1 class="cuisine-hero-title">Mizo Cuisine</h1>
+                <p class="cuisine-hero-text">
+                    Discover the authentic taste of Mizoram - where bamboo shoots meet smoked meats, 
+                    and every dish tells a story of the hills.
+                </p>
+            </div>
+        </section>
+
+        <!-- Food Categories -->
+        <section class="cuisine-categories">
+            <div class="section-container">
+                <div class="section-heading">
+                    <div class="section-heading-main">
+                        <span class="section-kicker">Categories</span>
+                        <h2 class="section-title">Culinary Traditions</h2>
+                    </div>
+                </div>
+
+                <div class="cuisine-category-grid">
+                    <div class="cuisine-category-card">
+                        <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=600" alt="Bamboo Delicacies" class="cuisine-category-img">
+                        <div class="cuisine-category-content">
+                            <h3 class="cuisine-category-title">Bamboo Delicacies</h3>
+                            <p class="cuisine-category-desc">Fresh bamboo shoots are a staple in Mizo cuisine, used in soups, stews, and fermented preparations.</p>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-category-card">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600" alt="Smoked Meats" class="cuisine-category-card">
+                        <div class="cuisine-category-content">
+                            <h3 class="cuisine-category-title">Smoked Specialties</h3>
+                            <p class="cuisine-category-desc">Traditional smoking techniques preserve meats over bamboo fires, creating unique flavors.</p>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-category-card">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" alt="Vegetarian" class="cuisine-category-img">
+                        <div class="cuisine-category-content">
+                            <h3 class="cuisine-category-title">Vegetarian Fare</h3>
+                            <p class="cuisine-category-desc">Forest herbs, leafy greens, and locally grown vegetables prepared with minimal spices.</p>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-category-card">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600" alt="Traditional Drinks" class="cuisine-category-img">
+                        <div class="cuisine-category-content">
+                            <h3 class="cuisine-category-title">Traditional Beverages</h3>
+                            <p class="cuisine-category-desc">From zu (rice beer) to herbal infusions, traditional drinks accompany every meal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signature Dishes -->
+        <section class="signature-dishes">
+            <div class="section-container">
+                <div class="section-heading">
+                    <div class="section-heading-main">
+                        <span class="section-kicker">Must Try</span>
+                        <h2 class="section-title">Signature Dishes</h2>
+                    </div>
+                </div>
+
+                <div class="dishes-showcase">
+                    <div class="dish-card">
+                        <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=300" alt="Bai" class="dish-img">
+                        <div class="dish-content">
+                            <h3 class="dish-name">Bai</h3>
+                            <p class="dish-name-mizo">(Vegetable Stew)</p>
+                            <p class="dish-desc">A comforting stew of vegetables, bamboo shoots, and herbs, slow-cooked with minimal spices to preserve natural flavors.</p>
+                        </div>
+                    </div>
+
+                    <div class="dish-card">
+                        <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=300" alt="Sawhchiar" class="dish-img">
+                        <div class="dish-content">
+                            <h3 class="dish-name">Sawhchiar</h3>
+                            <p class="dish-name-mizo">(Rice Porridge)</p>
+                            <p class="dish-desc">A festive rice porridge cooked with meat, ginger, and aromatic spices, traditionally served during special occasions.</p>
+                        </div>
+                    </div>
+
+                    <div class="dish-card">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300" alt="Vawksa Rep" class="dish-img">
+                        <div class="dish-content">
+                            <h3 class="dish-name">Vawksa Rep</h3>
+                            <p class="dish-name-mizo">(Smoked Pork)</p>
+                            <p class="dish-desc">Tender pork smoked over bamboo fire, then stir-fried with chili and herbs. A beloved delicacy across Mizoram.</p>
+                        </div>
+                    </div>
+
+                    <div class="dish-card">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=300" alt="Arsa Bibar" class="dish-img">
+                        <div class="dish-content">
+                            <h3 class="dish-name">Arsa Bibar</h3>
+                            <p class="dish-name-mizo">(Chicken Curry)</p>
+                            <p class="dish-desc">Free-range chicken cooked with local herbs, bamboo shoot, and mild spices for a flavorful, aromatic curry.</p>
+                        </div>
+                    </div>
+
+                    <div class="dish-card">
+                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300" alt="Chhangban" class="dish-img">
+                        <div class="dish-content">
+                            <h3 class="dish-name">Chhangban</h3>
+                            <p class="dish-name-mizo">(Steamed Rice Cake)</p>
+                            <p class="dish-desc">Sticky rice steamed in bamboo tubes, creating a unique cylindrical shape with a subtle bamboo aroma.</p>
+                        </div>
+                    </div>
+
+                    <div class="dish-card">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=300" alt="Pumpkin Stew" class="dish-img">
+                        <div class="dish-content">
+                            <h3 class="dish-name">Mai Thal</h3>
+                            <p class="dish-name-mizo">(Pumpkin Delight)</p>
+                            <p class="dish-desc">Sweet pumpkin cooked with sesame seeds and ginger, often enjoyed as a side dish or light meal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Ingredients -->
+        <section class="ingredients-section">
+            <div class="section-container">
+                <div class="section-heading">
+                    <div class="section-heading-main">
+                        <span class="section-kicker">Essential Elements</span>
+                        <h2 class="section-title">Key Ingredients</h2>
+                    </div>
+                </div>
+
+                <div class="ingredients-grid">
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <span class="material-symbols-outlined">grass</span>
+                        </div>
+                        <h4 class="ingredient-name">Bamboo Shoot</h4>
+                        <p class="ingredient-desc">Fresh and fermented varieties used in most dishes</p>
+                    </div>
+
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <span class="material-symbols-outlined">local_fire_department</span>
+                        </div>
+                        <h4 class="ingredient-name">Bhut Jolokia</h4>
+                        <p class="ingredient-desc">Ghost pepper adds heat to traditional recipes</p>
+                    </div>
+
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <span class="material-symbols-outlined">spa</span>
+                        </div>
+                        <h4 class="ingredient-name">Ginger & Garlic</h4>
+                        <p class="ingredient-desc">Aromatic base for most Mizo preparations</p>
+                    </div>
+
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <span class="material-symbols-outlined">set_meal</span>
+                        </div>
+                        <h4 class="ingredient-name">Sesame Seeds</h4>
+                        <p class="ingredient-desc">Adds nutty flavor to vegetable dishes</p>
+                    </div>
+
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <span class="material-symbols-outlined">egg</span>
+                        </div>
+                        <h4 class="ingredient-name">Smoked Pork</h4>
+                        <p class="ingredient-desc">Signature protein, preserved traditionally</p>
+                    </div>
+
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <span class="material-symbols-outlined">local_florist</span>
+                        </div>
+                        <h4 class="ingredient-name">Forest Herbs</h4>
+                        <p class="ingredient-desc">Wild-foraged herbs for authentic taste</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dining Experience -->
+        <section class="food-experience">
+            <div class="section-container food-experience-inner">
+                <div class="section-heading" style="text-align: center;">
+                    <span class="section-kicker" style="color: #d3eca2;">Cultural Dining</span>
+                    <h2 class="section-title" style="color: #fff;">The Mizo Dining Experience</h2>
+                </div>
+
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <span class="material-symbols-outlined experience-icon">food_bank</span>
+                        <h3 class="experience-title">Community Eating</h3>
+                        <p class="experience-text">Meals are traditionally shared from a common plate, fostering togetherness and community bonds.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <span class="material-symbols-outlined experience-icon">eco</span>
+                        <h3 class="experience-title">Banana Leaf Plates</h3>
+                        <p class="experience-text">Food is often served on fresh banana leaves, adding a subtle aroma and making cleanup eco-friendly.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <span class="material-symbols-outlined experience-icon">outdoor_grill</span>
+                        <h3 class="experience-title">Open Fire Cooking</h3>
+                        <p class="experience-text">Traditional cooking over wood fires imparts a distinctive smoky flavor that's hard to replicate.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <span class="material-symbols-outlined experience-icon">groups</span>
+                        <h3 class="experience-title">Tlawmngaihna</h3>
+                        <p class="experience-text">The spirit of hospitality ensures guests are always served first and generously.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dining Etiquette -->
+        <section class="etiquette-section">
+            <div class="section-container">
+                <div class="section-heading">
+                    <div class="section-heading-main">
+                        <span class="section-kicker">Good to Know</span>
+                        <h2 class="section-title">Dining Etiquette</h2>
+                    </div>
+                </div>
+
+                <div class="etiquette-list">
+                    <div class="etiquette-item">
+                        <span class="etiquette-number">1</span>
+                        <p class="etiquette-text">Wash hands before and after meals. Traditional meals are often eaten with hands.</p>
+                    </div>
+
+                    <div class="etiquette-item">
+                        <span class="etiquette-number">2</span>
+                        <p class="etiquette-text">Elders and guests are served first as a mark of respect.</p>
+                    </div>
+
+                    <div class="etiquette-item">
+                        <span class="etiquette-number">3</span>
+                        <p class="etiquette-text">Try a bit of everything offered. Refusing food outright may be considered impolite.</p>
+                    </div>
+
+                    <div class="etiquette-item">
+                        <span class="etiquette-number">4</span>
+                        <p class="etiquette-text">Leave a small amount of food on the plate to show you're satisfied.</p>
+                    </div>
+
+                    <div class="etiquette-item">
+                        <span class="etiquette-number">5</span>
+                        <p class="etiquette-text">Compliment the cook. Food is prepared with great care and appreciation is welcomed.</p>
+                    </div>
+
+                    <div class="etiquette-item">
+                        <span class="etiquette-number">6</span>
+                        <p class="etiquette-text">Accept offers of second helpings graciously, even if you take a small portion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cuisine-cta">
+            <div class="section-container">
+                <h2 class="cuisine-cta-title">Ready to Taste Mizoram?</h2>
+                <p class="cuisine-cta-text">Find authentic Mizo restaurants and local food experiences</p>
+                <a href="stays.html" class="cuisine-cta-btn">
+                    <span class="material-symbols-outlined">restaurant</span>
+                    Find Dining Experiences
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-orb"></div>
+        
+        <div class="footer-col footer-col--brand">
+            <div class="footer-brand">Visit Mizoram</div>
+            <p class="footer-text">
+                Embracing the Living Tapestry of the North East. Discover a land where culture and nature exist in perfect harmony.
+            </p>
+            <div class="footer-social">
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">public</span></a>
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">alternate_email</span></a>
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">share</span></a>
+            </div>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-list">
+                <li><a class="footer-link" href="heritage.html">Cultural Heritage</a></li>
+                <li><a class="footer-link" href="cuisine.html">Mizo Cuisine</a></li>
+                <li><a class="footer-link" href="safety.html">Safety & Emergency</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">Plan</h4>
+            <ul class="footer-list">
+                <li><a class="footer-link" href="guideline.html">Travel Guidelines</a></li>
+                <li><a class="footer-link" href="stays.html">Stay Directory</a></li>
+                <li><a class="footer-link" href="plan-trip/index.html">AI Trip Planner</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">The Newsletter</h4>
+            <p class="footer-description footer-description--muted">Receive monthly stories from the hills.</p>
+            <div class="footer-newsletter">
+                <input class="footer-input" placeholder="Email Address" type="email"/>
+                <button class="footer-newsletter-btn" type="button">Join</button>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2024 Visit Mizoram. Embracing The Living Tapestry.
+            </div>
+            <div class="footer-legal-links">
+                <a class="footer-legal-link" href="#">Instagram</a>
+                <a class="footer-legal-link" href="#">Twitter</a>
+                <a class="footer-legal-link" href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Admin Login | Visit Mizoram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+    <style>
+        body.auth-page { margin: 0; height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #0a3323; position: relative; overflow: hidden; }
+        .auth-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.3; filter: grayscale(50%); }
+        .auth-card { background: rgba(10, 51, 35, 0.95); backdrop-filter: blur(12px); border: 1px solid #e5d9c5; border-radius: 16px; padding: 3rem; width: 100%; max-width: 420px; z-index: 1; color: #fff; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); }
+        .auth-header { text-align: center; margin-bottom: 2rem; }
+        .auth-brand { font-family: 'Noto Serif', serif; font-size: 1.75rem; font-weight: 700; color: #e5d9c5; margin-bottom: 0.5rem; text-decoration: none; display: inline-block; }
+        .auth-title { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 300; color: #a3b8b0; text-align: center; margin-bottom: 1.5rem;}
+        .auth-form-group { margin-bottom: 1.5rem; }
+        .auth-label { display: block; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.5rem; color: #e2e8f0; }
+        .auth-input { width: 100%; padding: 0.875rem 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: #fff; font-family: 'Manrope', sans-serif; font-size: 1rem; transition: border-color 0.3s ease; box-sizing: border-box; }
+        .auth-input:focus { outline: none; border-color: #e5d9c5; background: rgba(255, 255, 255, 0.1); }
+        .auth-btn { width: 100%; padding: 1rem; background: #e5d9c5; color: #0a3323; border: none; border-radius: 8px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 0.5rem; }
+        .auth-btn:hover { background: #fdf5e6; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(229, 217, 197, 0.3); }
+        .error-msg { color: #ff6b6b; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; display: none; background: rgba(255, 107, 107, 0.1); padding: 10px; border-radius: 6px;}
+    </style>
+</head>
+<body class="auth-page">
+
+    <div class="auth-card">
+        <div class="auth-header">
+            <span class="auth-brand">System Administration</span>
+        </div>
+
+        <div id="error-container" class="error-msg"></div>
+
+        <p class="auth-title">Authorized Personnel Only</p>
+        
+        <form id="admin-login-form">
+            <div class="auth-form-group">
+                <label class="auth-label" for="admin-name">Administrator Username</label>
+                <input type="text" id="admin-name" class="auth-input" required placeholder="admin_root">
+            </div>
+            <div class="auth-form-group">
+                <label class="auth-label" for="admin-password">Master Password</label>
+                <input type="password" id="admin-password" class="auth-input" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="auth-btn" id="submit-btn">
+                Access Dashboard <span class="material-symbols-outlined">shield_person</span>
+            </button>
+        </form>
+    </div>
+
+    <script src="admin_auth.js"></script>
+</body>
+</html>

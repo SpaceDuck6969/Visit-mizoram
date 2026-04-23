@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Reiek | Visit Mizoram</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="phawngpui.css">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <script src="../../js/session.js" defer></script>
+    <script src="phawngpui.js" defer></script>
+    <script src="/js/planner-widget.js" defer></script>
+    <script src="/js/page-transition.js" defer></script>
+    <script src="../../js/navbar-search.js" defer></script>
+</head> 
+
+<body>
+
+  <header id="main-header" class="site-header">
+
+    <nav class="site-nav">
+        <a href="/index.html"><div class="site-brand">Visit Mizoram</div></a>
+        
+        <div class="site-nav-links">
+            <button id="destinations-trigger" class="nav-dropdown-trigger" type="button">
+                <span class="nav-dropdown-label">Destinations</span>
+                <span id="dest-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+            </button>
+
+            <button id="explore-trigger" class="nav-dropdown-trigger" type="button">
+                <span class="nav-dropdown-label">Explore</span>
+                <span id="explore-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+            </button>
+
+            <a class="top-nav-link" href="/plan-trip/index.html">Plan Trip</a>
+            <a class="top-nav-link" href="../../stays.html">Stay</a>
+        </div>
+
+        <div class="site-nav-actions" id="auth-container">
+            <button id="back-btn" class="back-btn">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Back
+            </button>
+            <div class="nav-search-container">
+                <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                <button id="nav-search-btn" class="nav-search-btn">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <div id="search-results" class="search-results-dropdown"></div>
+            </div>
+            <a href="../../login.html" id="join-btn" class="join-btn" style="text-decoration: none;">Join</a>
+
+            <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                <button id="user-dropdown-btn" class="user-dropdown-btn">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span id="nav-username">Traveler</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                
+                <div id="user-dropdown-content" class="user-dropdown-content">
+                    <a href="#" id="logout-btn">
+                        <span class="material-symbols-outlined">logout</span> 
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="destinations-menu" class="destinations-menu">
+        <div class="destinations-menu-inner">
+            
+            <div class="destinations-filter-bar">
+                <button class="filter-btn dest-filter-btn" data-filter="hill-stations">Hill stations</button>
+                <button class="filter-btn dest-filter-btn" data-filter="waterfalls">Waterfalls/Lakes</button>
+                <button class="filter-btn dest-filter-btn" data-filter="districts">Districts</button>
+            </div>
+
+            <div class="dest-grid" id="dest-grid">
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/reiek/reiek.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/images/hill-station image/Reiek.jpg" class="dest-card-image" alt="Reiek">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Reiek</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/hmuifang/hmuifang.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/destinations/hmuifang/Hmuifang.jpg" class="dest-card-image" alt="Hmuifang">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Hmuifang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/sakawrhmuituai/sakawrhmuituai.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/destinations/sakawrhmuituai/sakawrr.jpg" class="dest-card-image" alt="Sakawrhmuituai">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Sakawrhmuituai</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/phawngpui/phawngpui.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/images/hill-station image/phawngpui.webp" class="dest-card-image" alt="Phawngpui">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Phawngpui</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/phulpui/phulpui.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/destinations/phulpui/image/phulpui.jpg" class="dest-card-image" alt="phulpui">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Zawlpala Thlantlang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/mawmrang/mawmrang.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/destinations/mawmrang/Mawmrang.jpg" class="dest-card-image" alt="mawmrang">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Mawmrang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/ngai-tlang/ngai-tlang.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/images/hill-station image/ngai tlang.jpeg" class="dest-card-image" alt="Ngai Tlang">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Ngai Tlang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="/destinations/sialsuk/sialsuk.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/images/hill-station image/Sialsuk.jpg" class="dest-card-image" alt="Sialsuk">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Sialsuk</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div>
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="/images/hill-station image/pehlawn.jpeg" class="dest-card-image" alt="pehlawn">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">Pehlawn</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="waterfalls">
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="/images/hill-station image/Hangi.jpeg" class="dest-card-image" alt="Hangi Lunglen Tlang">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">HaASDASDASDlang</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="/destinations/mawmrang/Mawmrang.jpg" class="dest-card-image" alt="mawmrang">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">Mawmrang</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="/images/hill-station image/Hangi.jpeg" class="dest-card-image" alt="Hangi Lunglen Tlang">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">HaASDASDASDlang</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+        </div> 
+        </div> 
+        <div id="explore-menu" class="destinations-menu"> 
+            <div class="destinations-menu-inner explore-menu-inner">
+                <div class="explore-columns">
+                    
+                    <a class="explore-column" href="guideline.html">
+                        <div class="explore-img-wrapper">
+                            <img src="/images/travel guideline.png" alt="Travel Guideline">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Travel Guideline</h4>
+                            <p class="explore-column-text">Check official travel guidance, entry updates, and practical tips before your trip.</p>
+                        </div>
+                    </a>
+        
+                    <a class="explore-column" href="heritage.html">
+                        <div class="explore-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaiIoZO5jAaDuHH_iC8WvOZiBd2UuNoHmnFRbdgetGPFY01sYj89L-mOukwLJ38-X-AH3AJoDpbqocbz2M4FpHTeQ9IXIAqYMQpTQ1R-vPVhEd21v5s7ztxGJOo8XiflaeJZoWE_0VgYttZJawiCKXcmpkxhgJy6IWjGekHzowCuK_BCfDoARHYgTKvChzVRjs19mR3yn3O7G0whL016z38oVil3tb-2x8F1bSXZ6b016QdBp9af-pf68jFPi01WmPylrg74s1GM4" alt="Cultural and heritage">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Cultural and Heritage</h4>
+                            <p class="explore-column-text">Discover traditions, festivals, and heritage stories that shape Mizo identity.</p>
+                        </div>
+                    </a>
+        
+                    <a class="explore-column" href="cuisine.html">
+                        <div class="explore-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtfYDi0rrWcHcJulzaAxYMytlR2Mk-c2GlavnGj6c57kCbm-P8M2fFDmAm0SH_tmtcMp9kNnsx0LOr12Huf5WzeRXWqTVU7Adk-6ak-WDMf3est6MQIJu4rvFPv75ZkuSTE9n-YcLAZLdHvvH3ymbFpKQXN65wwp7hSYVpTYkKRdIfAXzD07_GQ2v443JryHGJYg1eTHZKGwCfc_l5Giu59bzzDWiPbrnVVrs95vmO_jIikBkFIGeeG75_6jaW9Bva7t8Q72-AqHo" alt="Mizo Cuisine">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Mizo Cuisine</h4>
+                            <p class="explore-column-text">Explore local flavors, signature dishes, and food experiences across Mizoram.</p>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+</header>
+
+<!-- Hero -->
+        <section class="hero">
+            <div class="hero-background">
+                <img class="hero-background-image animate-slow-zoom" 
+                     src="phawngpui.webp" 
+                     alt="Phawngpui National Park">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <span class="hero-kicker">Phawngpui • Mizoram</span>
+                    <h1 class="hero-title">Phawngpui National Park</h1>
+                    <p class="hero-lede">Where Clouds, Spirits, and Mountains Meet</p>
+                    <div class="hero-actions">
+                        <button class="hero-cta hero-cta-primary" type="button">
+                            Plan Your Visit
+                            <span class="material-symbols-outlined hero-cta-icon">arrow_forward</span>
+                        </button>
+                        <button class="hero-cta hero-cta-secondary" type="button">
+                            View Gallery
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Story & Guide -->
+<section class="destination-story" id="about-reiek">
+  <div class="story-inner">
+    <p>Rising silently above the rolling hills of southern Mizoram, Phawngpui National Park, also known as the Blue Mountain, is not just the highest peak in the state ,it is its soul. Standing tall at 2,157 meters above sea level, this sacred mountain near the India-Myanmar border feels less like a destination and more like a passage into another world.</p>
+    <p>Here, clouds drift like wandering spirits, forests whisper ancient stories, and cliffs fall away into mist-filled valleys. Protected since 1992 and spanning 50 square kilometers, Phawngpui is one of only two national parks in Mizoram, preserved both for its biodiversity and its deep cultural significance.</p>
+
+    <div class="story-block image-right">
+      <div class="story-text">
+        <h3>A Landscape Painted with Clouds</h3>
+        <p>
+            One of the most unforgettable experiences at Phawngpui is watching the mountains disappear and reappear beneath moving clouds. The light constantly shifts, turning valleys silver, cliffs gold, and forests deep emerald.
+        </p>
+      </div>
+      <div class="story-media">
+        <img src="Cloud.jpeg" alt="Panoramic view from Reiek Tlang">
+      </div>
+    </div>
+
+    <div class="story-block image-left">
+      <div class="story-text">
+        <h3>Thlazuang Khàm — The Cliff of No Return</h3>
+        <p>
+            On the western edge of the mountain lies Thlazuang Khàm, a dramatic semi-circular cliff plunging sharply into the Chhimtuipui valley. Mountain goats roam its edges, and local belief holds that the cliffs are guarded by spirits. Standing here, with clouds flowing beneath your feet, it is easy to understand why this place is feared, revered, and remembered.
+        </p>
+        
+      </div>
+      <div class="story-media">
+        <img src="thlazuang2.jpg" alt="Anthurium festival and Mizo cultural performances">
+      </div>
+    </div>
+
+    <div class="story-block image-left">
+      <div class="story-media">
+        <img src="phawngpui.webp" alt="Exploring the caves around Reiek">
+      </div>
+      <div class="story-text">
+        <h3>Phawngpui Peak</h3>
+        <p>Reaching the summit is both physically demanding and spiritually calming. The peak opens into a rare 2 km² level plateau, surrounded by sheer drops and endless sky. Silence dominates here—broken only by wind and distant bird calls—making it a natural space for reflection and solitude.</p>
+        <p>Encircled by dense bamboo and blooming rhododendrons, Phawngpui Tlang is considered holy by the Mizo people. Known as the Garden of the Gods, it is believed to be home to ancestral spirits and ancient chiefs. During spring, the grove transforms into a canvas of red, pink, and white blossoms floating through mist.</p>
+      </div>
+    </div>
+    
+    <div class="story-block image-left">
+        <div class="story-text">
+          <h3>A Sanctuary for Rare Wildlife</h3>
+          <p>Phawngpui is a biodiversity treasure trove, sheltering 300+ bird species and numerous rare mammals.</p>
+          <p>Birds Found Nowhere Else:</p>
+          <ul class="plain-list">
+            <li>
+              <div class="list-item-wrapper">
+                <div class="list-item-text">
+                  <strong>Mount Victoria babax</strong> - Rediscovered after 64 years, this elusive bird is a symbol of Phawngpui's mystery.
+                </div>
+                <img src="image/mount victoria.webp" alt="Mount Victoria babax" class="list-item-image" onclick="openLightbox(this)">
+              </div>
+            </li>
+            <li>
+              <div class="list-item-wrapper">
+                <div class="list-item-text">
+                  <strong>Blyth's tragopan</strong> - Mizoram's state bird, strikingly red and incredibly shy.
+                </div>
+                <img src="image/Blyths-Tragopans.webp" alt="Blyth's tragopan" class="list-item-image" onclick="openLightbox(this)">
+              </div>
+            </li>
+            <li>
+              <div class="list-item-wrapper">
+                <div class="list-item-text">
+                  <strong>Hume's pheasant</strong> - A secretive high-altitude forest dweller.
+                </div>
+                <img src="image/Humes-Pheasants.webp" alt="Hume's pheasant" class="list-item-image" onclick="openLightbox(this)">
+              </div>
+            </li>
+            <li>
+              <div class="list-item-wrapper">
+                <div class="list-item-text">
+                  <strong>Dark-rumped swift</strong> - Seen darting around cliffs and caves.
+                </div>
+                <img src="image/dark-rumped-swift.png" alt="Dark-rumped swift" class="list-item-image" onclick="openLightbox(this)">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Lightbox Modal -->
+      <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+      </div>
+
+      
+    <!-- Mammals of the Misty Forest -->
+<div class="story-block image-left">
+  <div class="story-text">
+    <h3>Mammals of the Misty Forest</h3>
+    <p>Clouded Leopard - Recorded in the Farpak grasslands since 1992.</p>
+    <p>Slow loris, capped langur, stump-tailed macaque, Asiatic black bear, goral, and even past sightings of tigers and leopards mark the park as a vital wildlife corridor.</p>
+  </div>
+</div>
+
+<!-- The Princess of the Blue Mountain -->
+<div class="story-block image-left">
+  <div class="story-text">
+    <h3>The Princess of the Blue Mountain</h3>
+    <p>Local legend speaks of a beautiful princess who belonged to the mountain itself. When taken away by a warrior, her spirit never left Phawngpui. Even today, locals say the drifting clouds and blooming flowers carry echoes of her love and sorrow.</p>
+  </div>
+</div>
+
+<!-- The Blue Orchid -->
+<div class="story-block image-left">
+  <div class="story-text">
+    <h3>The Blue Orchid</h3>
+    <p>A mythical blue orchid is said to bloom only once a year, visible only to the pure-hearted. Created by the mountain spirit for his beloved, it remains one of Phawngpui's most enduring mysteries.</p>
+  </div>
+  <div class="story-media">
+    <img src="image/blue-orchid.webp" alt="Misty forest mammals in Phawngpui" style="max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0;">
+  </div>
+</div>
+
+<!-- The Guardian Bird -->
+<div class="story-block image-right">
+  <div class="story-text">
+    <h3>The Guardian Bird</h3>
+    <p>The Mount Victoria babax is believed to be the transformed soul of the princess's loyal friend—now guarding the mountain through song.</p>
+  </div>
+  <div class="story-media">
+    <img src="image/mount victoria babex.jpg"Mount Victoria babax bird in Phawngpui" style="max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0;">
+  </div>
+</div>
+  </div>
+</section>
+
+<section class="destination-guide" id="travel-guide">
+  <div class="guide-inner">
+    <h2 class="section-title">Travel Guide to Phawngpui</h2>
+
+    <div class="guide-grid">
+      <!-- When and How to Visit -->
+      <article class="guide-card">
+        <h3>When and How to Visit</h3>
+        <p><strong>Best Time:</strong> November to April (eco-friendly visits permitted by the Government of Mizoram)</p>
+        <p><strong>Avoid:</strong> Monsoon season due to landslides and closures</p>
+        <p><strong>Nearest Village:</strong> Sangau (trek or drive access)</p>
+        <p><strong>Activities:</strong> Trekking, birdwatching, camping, photography</p>
+      </article>
+
+      <!-- Conservation Notice -->
+      <article class="guide-card">
+        <h3>Travel Responsibly</h3>
+        <p>Efforts are ongoing to conserve the park, especially against orchid theft and habitat disturbance. Visitors are encouraged to travel responsibly and respect local customs.</p>
+      </article>
+
+      <!-- Why Phawngpui Stays With You -->
+      <article class="guide-card">
+        <h3>Why Phawngpui Stays With You</h3>
+        <p>Phawngpui is not a place you simply visit—it is a place you feel. It humbles you with its cliffs, calms you with its silence, and enchants you with stories older than memory. Standing above the clouds, surrounded by bamboo forests and unseen wings, you realize that some mountains are not meant to be conquered—only understood.</p>
+        <p>If your journey seeks nature, culture, and quiet wonder, Phawngpui National Park is waiting.</p>
+      </article>
+    </div>
+
+    <div class="guide-footer">
+      <h3>Plan Your Journey</h3>
+      <p>Whether you are seeking adventure, solitude, or a deeper connection with nature, Phawngpui offers an experience that feels both transformative and meaningful.</p>
+    </div>
+  </div>
+</section>
+    <footer class="site-footer">
+        <div class="footer-orb"></div>
+        
+        <div class="footer-col footer-col--brand">
+            <div class="footer-brand">Visit Mizoram</div>
+            <p class="footer-text">
+                Embracing the Living Tapestry of the North East. Discover a land where culture and nature exist in perfect harmony.
+            </p>
+            <div class="footer-social">
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">public</span></a>
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">alternate_email</span></a>
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">share</span></a>
+            </div>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-list">
+                <li><a class="footer-link" href="#">Cultural Heritage</a></li>
+                <li><a class="footer-link" href="#">Sustainability</a></li>
+                <li><a class="footer-link" href="#">Press Kit</a></li>
+                <li><a class="footer-link" href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">Plan</h4>
+            <ul class="footer-list">
+                <li><a class="footer-link" href="#">Entry Permits</a></li>
+                <li><a class="footer-link" href="#">Travel Guides</a></li>
+                <li><a class="footer-link" href="../../stays.html">Stay Directory</a></li>
+                <li><a class="footer-link" href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">The Newsletter</h4>
+            <p class="footer-description footer-description--muted">Receive monthly stories from the hills.</p>
+            <div class="footer-newsletter">
+                <input class="footer-input" placeholder="Email Address" type="email"/>
+                <button class="footer-newsletter-btn" type="button">Join</button>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2024 Visit Mizoram. Embracing The Living Tapestry.
+            </div>
+            <div class="footer-legal-links">
+                <a class="footer-legal-link" href="#">Instagram</a>
+                <a class="footer-legal-link" href="#">Twitter</a>
+                <a class="footer-legal-link" href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <button aria-label="Open Smart Planner chatbot" aria-expanded="false" class="fab" id="smart-planner-fab" type="button">
+        <span class="material-symbols-outlined material-symbols-filled fab-icon">smart_toy</span>
+        <div class="fab-tooltip">
+            Open Smart Planner
+        </div>
+    </button>
+
+    <section aria-label="Smart Planner Widget" class="planner-widget" id="planner-widget" aria-hidden="true">
+        <div class="planner-widget-header">
+            <h4 id="planner-widget-title">Smart Planner</h4>
+            <button class="planner-widget-close" id="planner-widget-close" type="button">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="planner-widget-controls">
+            <label for="planner-language">Language</label>
+            <select id="planner-language">
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Mizo">Mizo</option>
+                <option value="Bengali">Bengali</option>
+            </select>
+        </div>
+        <div class="planner-widget-prompts" id="planner-widget-prompts">
+            <button type="button" class="planner-chip">Tomorrow weather in Aizawl</button>
+            <button type="button" class="planner-chip">Top places in Champhai</button>
+            <button type="button" class="planner-chip">Local food recommendations</button>
+        </div>
+        <div class="planner-widget-messages" id="planner-widget-messages" aria-live="polite"></div>
+        <form class="planner-widget-form" id="planner-widget-form">
+            <textarea id="planner-widget-input" placeholder="Ask about Mizoram travel..." rows="2" required></textarea>
+            <button id="planner-widget-send" type="submit">Send</button>
+        </form>
+    </section>
+</body>
+</html>

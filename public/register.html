@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Partner Portal | Visit Mizoram</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/session.js" defer></script>
+    <script src="js/navbar-search.js" defer></script>
+    <script src="js/register.js" defer></script>
+</head>
+
+<body class="registration-page">
+
+    <header class="site-header">
+        <nav class="site-nav">
+            <a href="index.html"><div class="site-brand">Visit Mizoram</div></a>
+            <div class="site-nav-actions" id="auth-container">
+                <button id="back-btn" class="back-btn">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </button>
+                <div class="nav-search-container">
+                    <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                    <button id="nav-search-btn" class="nav-search-btn">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <div id="search-results" class="search-results-dropdown"></div>
+                </div>
+                <a href="index.html" class="join-btn" style="text-decoration: none;">Back to Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section-container" style="padding-top: 8rem; padding-bottom: 4rem;">
+            <div class="section-heading" style="text-align: center; align-items: center;">
+                <span class="section-kicker">Partner Portal</span>
+                <h1 class="section-title">List Your Property</h1>
+                <p class="section-description" style="max-width: 500px; margin: 1.5rem auto 0; font-size: 1.1rem; opacity: 0.8;">
+                    Join our collection of authentic stays. We help travelers find the soul of Mizoram through your hospitality.
+                </p>
+            </div>
+        </section>
+
+        <section class="section-container" style="padding-bottom: 10rem;">
+            <div class="form-card leaf-radius editorial-shadow">
+
+                <div id="responseMessage" class="response-message" role="status" aria-live="polite"></div>
+
+                <form id="hotelRegistrationForm">
+                    <div class="input-grid">
+                        <div class="form-field full-width">
+                            <label class="field-label" for="hotelName">PROPERTY NAME</label>
+                            <input type="text" id="hotelName" name="hotelName" class="editorial-input" placeholder="e.g. Blue Mountain Homestay" required autocomplete="organization">
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="hotelAddress">ADDRESS</label>
+                            <input type="text" id="hotelAddress" name="hotelAddress" class="editorial-input" placeholder="Locality, Town/Village" required autocomplete="street-address">
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="hotelContact">CONTACT NUMBER</label>
+                            <input type="text" id="hotelContact" name="hotelContact" class="editorial-input js-digits-only" placeholder="Digits only" required inputmode="numeric" autocomplete="tel">
+                        </div>
+
+                        <div class="form-field full-width">
+                            <label class="field-label" for="hotelDescription">DESCRIPTION</label>
+                            <textarea id="hotelDescription" name="hotelDescription" class="editorial-input" placeholder="Describe the atmosphere, nearby peaks, or local food offered..." required></textarea>
+                        </div>
+
+                        <div class="form-field full-width">
+                            <label class="field-label" for="hotelImages">VISUALS (UP TO 10 PHOTOS)</label>
+                            <div
+                                id="uploadZone"
+                                class="upload-zone"
+                                role="button"
+                                tabindex="0"
+                                aria-label="Choose property photos. Up to 10 images."
+                            >
+                                <span class="material-symbols-outlined upload-icon" aria-hidden="true">landscape</span>
+                                <span class="upload-prompt">Click or drop high-resolution images here</span>
+                                <input type="file" id="hotelImages" name="hotelImages" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple required aria-required="true">
+                            </div>
+                            <div id="imageCountLabel" class="image-count-label">No files selected</div>
+                        </div>
+
+                        <div class="form-field full-width">
+                            <span class="field-label">LOCATION COORDINATES</span>
+                            <div class="location-options">
+                                <button type="button" class="join-btn" id="gpsBtn">
+                                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle;" aria-hidden="true">my_location</span>
+                                    Use current location
+                                </button>
+                                <button type="button" class="editorial-input location-manual-btn" id="manualCoordsBtn">
+                                    Enter manually
+                                </button>
+                            </div>
+
+                            <div id="manualCoords" class="input-grid manual-coords-panel" hidden>
+                                <div class="form-field">
+                                    <label class="field-label" for="latitude">LATITUDE</label>
+                                    <input type="number" step="any" id="latitude" name="latitude" class="editorial-input" placeholder="23.73" inputmode="decimal">
+                                </div>
+                                <div class="form-field">
+                                    <label class="field-label" for="longitude">LONGITUDE</label>
+                                    <input type="number" step="any" id="longitude" name="longitude" class="editorial-input" placeholder="92.71" inputmode="decimal">
+                                </div>
+                            </div>
+
+                            <div id="locationStatus" class="location-status" aria-live="polite"></div>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="hero-cta hero-cta-primary full-submit full-width">
+                            SEND APPLICATION
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_right_alt</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="register-success-modal" class="register-modal" aria-hidden="true" role="dialog" aria-labelledby="register-modal-title" aria-modal="true">
+        <div class="register-modal-backdrop" data-close-modal></div>
+        <div class="register-modal-panel leaf-radius">
+            <div class="register-modal-icon" aria-hidden="true">
+                <span class="material-symbols-outlined">verified</span>
+            </div>
+            <h2 id="register-modal-title" class="register-modal-title">Successfully registered</h2>
+            <p id="register-modal-body" class="register-modal-body">Your property is in our partner queue. We will follow up using the contact number you provided.</p>
+            <p id="register-modal-id" class="register-modal-id"></p>
+            <button type="button" class="register-modal-btn" id="register-modal-dismiss">Continue</button>
+        </div>
+    </div>
+
+</body>
+</html>

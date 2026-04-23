@@ -1,0 +1,124 @@
+.safety-main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 3.5rem;
+}
+
+.safety-kicker {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #51652a;
+    margin: 0 0 0.35rem;
+}
+
+.safety-title {
+    font-family: "Noto Serif", serif;
+    font-size: clamp(1.65rem, 4vw, 2.1rem);
+    color: #0a3323;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+.safety-lead {
+    margin: 0 0 2rem;
+    line-height: 1.65;
+    color: #2f4535;
+    font-size: 1.02rem;
+}
+
+.safety-section {
+    margin-bottom: 2.25rem;
+}
+
+.safety-section h2 {
+    font-family: "Noto Serif", serif;
+    font-size: 1.28rem;
+    color: #0a3323;
+    margin: 0 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.safety-section h2 .material-symbols-outlined {
+    font-size: 1.35rem;
+    opacity: 0.9;
+}
+
+.safety-card {
+    background: rgba(244, 241, 212, 0.88);
+    border: 1px solid rgba(10, 51, 35, 0.12);
+    border-radius: 1rem;
+    padding: 1.1rem 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.safety-card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+    color: #0a3323;
+}
+
+.safety-card p,
+.safety-card li {
+    margin: 0;
+    line-height: 1.55;
+    color: #2f4535;
+    font-size: 0.95rem;
+}
+
+.safety-card ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.15rem;
+}
+
+.safety-tel {
+    font-weight: 700;
+    color: #0a3323;
+    text-decoration: none;
+}
+
+.safety-tel:hover {
+    text-decoration: underline;
+}
+
+.safety-disclaimer {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #51652a;
+    border-top: 1px solid rgba(10, 51, 35, 0.12);
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+}
+
+.safety-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.safety-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    background: #0a3323;
+    color: #fff;
+    text-decoration: none;
+}
+
+.safety-actions a.secondary {
+    background: transparent;
+    color: #0a3323;
+    border: 1px solid rgba(10, 51, 35, 0.25);
+}
+
+.safety-actions a:hover {
+    filter: brightness(1.06);
+}

@@ -1,0 +1,191 @@
+/* =========================
+   STORY & GUIDE SECTIONS
+========================= */
+
+.section-title {
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', "Noto Serif", serif; /* Fallback to your main font */
+}
+
+.destination-story,
+.destination-guide {
+    padding: 80px 18vw;
+    background: #f7f4d5;
+}
+
+.destination-story {
+    border-bottom: 1px solid #e2e6f0;
+}
+
+.destination-guide {
+    background: #f7f4d5;
+}
+
+.story-inner,
+.guide-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-kicker {
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8c8fa3;
+    margin-bottom: 16px;
+}
+
+.destination-story h3,
+.destination-guide h3 {
+    font-size: 22px;
+    margin-top: 32px;
+    margin-bottom: 10px;
+    color: #1b1f3b;
+    font-family: "Noto Serif", serif;
+}
+
+.destination-story p {
+    line-height: 1.8;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* STORY BLOCKS WITH SIDE IMAGES */
+.story-block {
+    display: flex;
+    align-items: stretch;
+    gap: 28px;
+    margin-top: 36px;
+    margin-bottom: 36px;
+}
+
+.story-block.image-left {
+    flex-direction: row-reverse;
+}
+
+.story-text {
+    flex: 2;
+}
+
+.story-media {
+    flex: 1.2;
+}
+
+.story-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+/* GUIDE GRID & CARDS */
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.guide-card {
+    background: #0a3323;
+    border-radius: 18px;
+    padding: 22px 22px 20px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.guide-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #f7f4d5;
+}
+
+.guide-card p,
+.guide-card ul {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #ffffffc5;
+}
+
+.guide-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.guide-card ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+}
+
+.guide-card ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #6366f1; /* Purple/Indigo accent */
+}
+
+/* GUIDE FOOTER */
+
+.guide-footer h3 {
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+.guide-footer p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4b5563;
+    max-width: 900px;
+}
+
+/* PLAIN LIST (For Story Section) */
+.plain-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0 12px;
+}
+
+.plain-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 4px;
+    line-height: 1.8;
+    color: #444;
+}
+
+.plain-list li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #6366f1; /* Purple/Indigo accent */
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+@media (max-width: 768px) {
+    .destination-story,
+    .destination-guide {
+        padding: 60px 6vw; /* Reduced padding for mobile */
+    }
+
+    .story-block,
+    .story-block.image-left,
+    .story-block.image-right {
+        flex-direction: column;
+    }
+
+    .story-media {
+        order: -1; /* Puts image above text on mobile */
+    }
+    
+    .story-media img {
+        height: 300px; /* Prevents extremely tall images on mobile */
+    }
+}

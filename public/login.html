@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Login | Visit Mizoram</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        /* Specific Styles for Auth Page matching your theme */
+        body.auth-page {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0a3323; /* Your theme color fallback */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .auth-card {
+            background: rgba(10, 51, 35, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 420px;
+            z-index: 1;
+            color: #fff;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-brand {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #e5d9c5; /* Gold-ish accent from your theme */
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .auth-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #a3b8b0;
+        }
+
+        .auth-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-label {
+            display: block;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: #e5d9c5;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #e5d9c5;
+            color: #0a3323;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .auth-btn:hover {
+            background: #fdf5e6;
+            transform: translateY(-1px);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            color: #a3b8b0;
+        }
+
+        .auth-switch a {
+            color: #e5d9c5;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+
+        /* View Toggling */
+        .auth-view { display: none; }
+        .auth-view.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body class="auth-page">
+
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg2AgYl7cEkLNGbzemaX48wcVbVUeKCLCojMQU9rF7cOBfKnGbeRYvE-pglN_esF24gxmKvy310qsrDdVBYtbAxbROwxg5Ai3dyyP-F832nWeQbTnatjnv54EJvcqIgRxzKnCdtzDVFXSBN7ooQsdf2qXtmcK7OwpQ09JQHaGI-AC2Fkj2gvJCpGzGvmNg1rfoh1wGRyLyw_YsxwJ8gcOMOQYDPlPmqtOvuM9ezAD7umyknY4499Q099_04QwKALvxlDURTHZoqXE" alt="Mizoram Landscape" class="auth-background">
+
+    <div class="auth-card">
+        <div class="auth-header">
+            <a href="index.html" class="auth-brand">Visit Mizoram</a>
+        </div>
+
+        <div id="error-container" class="error-msg"></div>
+
+        <div id="view-login" class="auth-view active">
+            <p class="auth-title" style="text-align: center; margin-bottom: 1.5rem;">Welcome back to the hills.</p>
+            <form id="login-form">
+                <div class="auth-form-group">
+                    <label class="auth-label" for="login-email">Email Address</label>
+                    <input type="email" id="login-email" class="auth-input" required placeholder="nomad@example.com">
+                </div>
+                <div class="auth-form-group">
+                    <label class="auth-label" for="login-password">Password</label>
+                    <input type="password" id="login-password" class="auth-input" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="auth-btn">
+                    Sign In <span class="material-symbols-outlined">login</span>
+                </button>
+            </form>
+            <div class="auth-switch">
+                New to the tapestry? <a onclick="switchView('view-register')">Join us</a>
+            </div>
+        </div>
+
+        <div id="view-register" class="auth-view">
+            <p class="auth-title" style="text-align: center; margin-bottom: 1.5rem;">Begin your journey.</p>
+            <form id="register-form">
+                <div class="auth-form-group">
+                    <label class="auth-label" for="reg-username">Explorer Name</label>
+                    <input type="text" id="reg-username" class="auth-input" required placeholder="John Doe">
+                </div>
+                <div class="auth-form-group">
+                    <label class="auth-label" for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" class="auth-input" required placeholder="nomad@example.com">
+                </div>
+                <div class="auth-form-group">
+                    <label class="auth-label" for="reg-password">Password</label>
+                    <input type="password" id="reg-password" class="auth-input" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="auth-btn">
+                    Create Account <span class="material-symbols-outlined">person_add</span>
+                </button>
+            </form>
+            <div class="auth-switch">
+                Already have an account? <a onclick="switchView('view-login')">Sign In</a>
+            </div>
+        </div>
+
+        <div id="view-otp" class="auth-view">
+            <p class="auth-title" style="text-align: center; margin-bottom: 1.5rem;">Verify your identity.</p>
+            <p style="text-align: center; font-size: 0.85rem; color: #a3b8b0; margin-bottom: 1rem;">
+                We sent a 6-digit code to <span id="display-email" style="color: #fff; font-weight: bold;"></span>
+            </p>
+            <form id="otp-form">
+                <div class="auth-form-group">
+                    <label class="auth-label" for="otp-code">6-Digit Code</label>
+                    <input type="text" id="otp-code" class="auth-input" required placeholder="123456" maxlength="6" style="text-align: center; letter-spacing: 0.5rem; font-size: 1.25rem;">
+                </div>
+                <button type="submit" class="auth-btn">
+                    Verify & Enter <span class="material-symbols-outlined">verified</span>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/session.js" defer></script>
+    <script src="js/navbar-search.js" defer></script>
+</body>
+</html>

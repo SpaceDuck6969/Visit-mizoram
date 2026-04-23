@@ -1,0 +1,45 @@
+Slides 7–9 (Revised Honest + Strong Version)
+
+“Now, let’s look at the core features of our platform — the part that makes Visit Mizoram smart, adaptive, and safe.
+
+First, we have Smart Trip Planning.
+
+Planning a trip can be difficult, especially in regions where information is limited. Our platform uses AI to generate personalized itineraries based on user preferences like budget, time, and interests.
+
+So instead of manually searching, users get an optimized travel plan instantly — including suggested routes, schedules, and destinations.
+
+This helps reduce planning effort and makes the overall travel experience much more efficient and user-friendly.
+
+Next is Real-Time Insights.
+
+Our system provides live weather updates along with crowd density insights.
+
+Currently, for our prototype, the crowd data is simulated using dummy data to demonstrate how the system would work in real-world conditions.
+
+In a full-scale implementation, this can be powered by real-time data sources such as GPS signals, user activity, or tourism databases.
+
+Even at this stage, it clearly shows how tourists can receive alerts — for example, if a location is overcrowded or weather conditions are unfavorable — and adjust their plans accordingly.
+
+So the key idea here is dynamic decision-making, not static information.
+
+Finally, we focus on Safety and Awareness, which is a critical part of tourism.
+
+Our platform helps users locate nearby hospitals and police stations, ensuring quick access to help during emergencies.
+
+We also include cultural awareness guidance. Mizoram has strong traditions and social norms, and many tourists may not be familiar with them.
+
+So we provide simple guidance on local customs and appropriate behavior — especially in sensitive places like churches or community areas.
+
+This helps promote respectful tourism and reduces cultural misunderstandings.
+
+Additionally, our platform includes an AI chatbot to assist users.
+
+For this prototype, we are using a free API-based chatbot integration to demonstrate functionality.
+
+In a full system, this can be further enhanced with more advanced models and local data to provide even more accurate and contextual assistance.
+
+So when we combine these features — smart planning, real-time adaptability, safety systems, and AI assistance — we are not just building a tourism platform.
+
+We are creating a smart, scalable solution that can grow with better data and stronger AI integration over time.
+
+And that is what makes Visit Mizoram both practical today and powerful for the future.”

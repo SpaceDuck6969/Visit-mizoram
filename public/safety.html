@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safety &amp; Emergency | Visit Mizoram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,700;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="plan-trip/chatbot.css" />
+    <link rel="stylesheet" href="css/safety-page.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/session.js" defer></script>
+    <script src="js/page-transition.js" defer></script>
+    <script src="js/navbar-search.js" defer></script>
+</head>
+<body>
+    <header id="main-header" class="site-header">
+        <nav class="site-nav">
+            <a href="index.html"><div class="site-brand">Visit Mizoram</div></a>
+            
+            <div class="site-nav-links">
+                <button id="destinations-trigger" class="nav-dropdown-trigger" type="button">
+                    <span class="nav-dropdown-label">Destinations</span>
+                    <span id="dest-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+                </button>
+
+                <button id="explore-trigger" class="nav-dropdown-trigger" type="button">
+                    <span class="nav-dropdown-label">Explore</span>
+                    <span id="explore-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+                </button>
+
+                <a class="top-nav-link" href="plan-trip/index.html">Plan Trip</a>
+                <a class="top-nav-link" href="stays.html">Stay</a>
+            </div>
+
+            <div class="site-nav-actions" id="auth-container">
+                <button id="back-btn" class="back-btn">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </button>
+                <div class="nav-search-container">
+                    <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                    <button id="nav-search-btn" class="nav-search-btn">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <div id="search-results" class="search-results-dropdown"></div>
+                </div>
+                <a href="login.html" id="join-btn" class="join-btn" style="text-decoration: none;">Join</a>
+
+                <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                    <button id="user-dropdown-btn" class="user-dropdown-btn">
+                        <span class="material-symbols-outlined">account_circle</span>
+                        <span id="nav-username">Traveler</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    
+                    <div id="user-dropdown-content" class="user-dropdown-content">
+                        <a href="#" id="logout-btn">
+                            <span class="material-symbols-outlined">logout</span> 
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="safety-main">
+        <p class="safety-kicker">Stay informed</p>
+        <h2 class="safety-title">Travel calm, climb smart, know who to call.</h2>
+        <p class="safety-lead">
+            Mizoram is widely regarded as one of India’s safer states for visitors. Still, hills, season, and remoteness matter.
+            Use this page as a practical checklist—not a substitute for official advisories, your embassy, or local authorities.
+        </p>
+
+        <section class="safety-section" aria-labelledby="sec-emergency">
+            <h2 id="sec-emergency">
+                <span class="material-symbols-outlined" aria-hidden="true">emergency</span>
+                Emergency numbers
+            </h2>
+            <div class="safety-card">
+                <h3>All‑India &amp; state</h3>
+                <ul>
+                    <li><strong>Emergency (single number in many states):</strong> <a class="safety-tel" href="tel:112">112</a></li>
+                    <li><strong>Ambulance (often public):</strong> <a class="safety-tel" href="tel:108">108</a></li>
+                    <li><strong>Fire:</strong> <a class="safety-tel" href="tel:101">101</a></li>
+                </ul>
+                <p style="margin-top:0.65rem;font-size:0.88rem">
+                    For police in a specific town, locals and your hotel can give the nearest thana (station) number—save it on arrival.
+                </p>
+            </div>
+        </section>
+
+        <section class="safety-section" aria-labelledby="sec-medical">
+            <h2 id="sec-medical">
+                <span class="material-symbols-outlined" aria-hidden="true">local_hospital</span>
+                Medical care
+            </h2>
+            <div class="safety-card">
+                <h3>In Aizawl</h3>
+                <p>
+                    Larger facilities include Civil Hospital Aizawl and private options such as Ebenezer Medical Centre and Trinity Hospital (names and services change—verify before travel).
+                    For serious emergencies, stabilize first, then follow local advice on transfer.
+                </p>
+            </div>
+            <div class="safety-card">
+                <h3>Remote areas</h3>
+                <p>
+                    Carry a basic kit, prescribed medicines, and ORS. Mobile coverage can be patchy on ridges—download offline maps and tell someone your route and expected return time.
+                </p>
+            </div>
+        </section>
+
+        <section class="safety-section" aria-labelledby="sec-hills">
+            <h2 id="sec-hills">
+                <span class="material-symbols-outlined" aria-hidden="true">landscape</span>
+                Hills &amp; weather
+            </h2>
+            <div class="safety-card">
+                <h3>Trekking &amp; viewpoints</h3>
+                <ul>
+                    <li>Check fog, rain, and sunset time; carry a torch and rain layer.</li>
+                    <li>Stick to known paths; hire local guides for longer or restricted routes.</li>
+                    <li>Altitude and steep descents sap energy—plan shorter days if you are new to hills.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="safety-section" aria-labelledby="sec-respect">
+            <h2 id="sec-respect">
+                <span class="material-symbols-outlined" aria-hidden="true">diversity_3</span>
+                Respect &amp; social calm
+            </h2>
+            <div class="safety-card">
+                <h3>Community norms</h3>
+                <p>
+                    Sundays are quiet; dress modestly at places of worship; ask before photographing people or private events.
+                    Courtesy and patience go a long way on narrow mountain roads.
+                </p>
+            </div>
+        </section>
+
+        <section class="safety-section" aria-labelledby="sec-docs">
+            <h2 id="sec-docs">
+                <span class="material-symbols-outlined" aria-hidden="true">badge</span>
+                Permits &amp; documents
+            </h2>
+            <div class="safety-card">
+                <h3>Inner Line Permit (ILP)</h3>
+                <p>
+                    Domestic visitors usually need an ILP for Mizoram. Rules change—confirm on official state portals before you book transport.
+                </p>
+                <div class="safety-actions">
+                    <a href="guideline.html">Read travel guidelines</a>
+                    <a class="secondary" href="https://indianfrro.gov.in/eservices/home" rel="noopener noreferrer" target="_blank">FRRO / e-services (India)</a>
+                </div>
+            </div>
+        </section>
+
+        <p class="safety-disclaimer">
+            Visit Mizoram is an independent travel showcase. Numbers and hospital names are indicative; verify with official sources.
+            In a life-threatening situation, call local emergency services or seek the nearest hospital immediately.
+        </p>
+    </main>
+</body>
+</html>

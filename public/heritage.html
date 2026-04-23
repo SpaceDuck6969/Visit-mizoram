@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Heritage & Culture | Visit Mizoram</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/heritage.css"/>
+    <script src="js/session.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/page-transition.js" defer></script>
+    <script src="js/navbar-search.js" defer></script>
+</head>
+
+<body>
+
+<header id="main-header" class="site-header">
+    <nav class="site-nav">
+        <a href="index.html"><div class="site-brand">Visit Mizoram</div></a>
+
+        <div class="site-nav-links">
+            <button id="destinations-trigger" class="nav-dropdown-trigger" type="button">
+                <span class="nav-dropdown-label">Destinations</span>
+                <span id="dest-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+            </button>
+
+            <button id="explore-trigger" class="nav-dropdown-trigger" type="button">
+                <span class="nav-dropdown-label">Explore</span>
+                <span id="explore-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+            </button>
+
+            <a class="top-nav-link" href="plan-trip/index.html">Plan Trip</a>
+            <a class="top-nav-link" href="safety.html">Safety</a>
+            <a class="top-nav-link" href="stays.html">Stay</a>
+        </div>
+
+        <div class="site-nav-actions" id="auth-container">
+            <button id="back-btn" class="back-btn">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Back
+            </button>
+            <div class="nav-search-container">
+                <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                <button id="nav-search-btn" class="nav-search-btn">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <div id="search-results" class="search-results-dropdown"></div>
+            </div>
+            <a href="login.html" id="join-btn" class="join-btn" style="text-decoration: none;">Join</a>
+
+            <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                <button id="user-dropdown-btn" class="user-dropdown-btn">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span id="nav-username">Traveler</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                
+                <div id="user-dropdown-content" class="user-dropdown-content">
+                    <a href="#" id="logout-btn">
+                        <span class="material-symbols-outlined">logout</span> 
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="destinations-menu" class="destinations-menu">
+        <div class="destinations-menu-inner">
+            <div class="destinations-filter-bar">
+                <button class="filter-btn dest-filter-btn" data-filter="hill-stations">Hill stations</button>
+                <button class="filter-btn dest-filter-btn" data-filter="waterfalls">Waterfalls/Lakes</button>
+                <button class="filter-btn dest-filter-btn" data-filter="districts">Districts</button>
+            </div>
+            <div class="dest-grid" id="dest-grid">
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/reiek/reiek.html">
+                        <div class="dest-card-shell">
+                            <div><img src="images/hill-station image/Reiek.jpg" class="dest-card-image" alt="Reiek"></div>
+                            <div class="dest-card-title-wrap"><h4 class="dest-card-title">Reiek</h4></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/hmuifang/hmuifang.html">
+                        <div class="dest-card-shell">
+                            <div><img src="destinations/hmuifang/Hmuifang.jpg" class="dest-card-image" alt="Hmuifang"></div>
+                            <div class="dest-card-title-wrap"><h4 class="dest-card-title">Hmuifang</h4></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/sakawrhmuituai/sakawrhmuituai.html">
+                        <div class="dest-card-shell">
+                            <div><img src="destinations/sakawrhmuituai/sakawrr.jpg" class="dest-card-image" alt="Sakawrhmuituai"></div>
+                            <div class="dest-card-title-wrap"><h4 class="dest-card-title">Sakawrhmuituai</h4></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/phawngpui/phawngpui.html">
+                        <div class="dest-card-shell">
+                            <div><img src="images/hill-station image/phawngpui.webp" class="dest-card-image" alt="Phawngpui"></div>
+                            <div class="dest-card-title-wrap"><h4 class="dest-card-title">Phawngpui</h4></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/phulpui/phulpui.html">
+                        <div class="dest-card-shell">
+                            <div><img src="destinations/phulpui/image/phulpui.jpg" class="dest-card-image" alt="phulpui"></div>
+                            <div class="dest-card-title-wrap"><h4 class="dest-card-title">Zawlpala Thlantlang</h4></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/mawmrang/mawmrang.html">
+                        <div class="dest-card-shell">
+                            <div><img src="destinations/mawmrang/Mawmrang.jpg" class="dest-card-image" alt="mawmrang"></div>
+                            <div class="dest-card-title-wrap"><h4 class="dest-card-title">Mawmrang</h4></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="explore-menu" class="destinations-menu">
+        <div class="destinations-menu-inner explore-menu-inner">
+            <div class="explore-columns">
+                <a class="explore-column" href="guideline.html">
+                    <div class="explore-img-wrapper">
+                        <img src="images/travel guideline.png" alt="Travel Guideline">
+                    </div>
+                    <div class="explore-content">
+                        <h4 class="explore-column-title">Travel Guideline</h4>
+                        <p class="explore-column-text">Check official travel guidance and practical tips before your trip.</p>
+                    </div>
+                </a>
+                <a class="explore-column" href="heritage.html">
+                    <div class="explore-img-wrapper">
+                        <img src="cultural dress/Puanchei.png" alt="Cultural and Heritage">
+                    </div>
+                    <div class="explore-content">
+                        <h4 class="explore-column-title">Cultural and Heritage</h4>
+                        <p class="explore-column-text">Discover traditions, festivals, and heritage stories.</p>
+                    </div>
+                </a>
+                <a class="explore-column" href="cuisine.html">
+                    <div class="explore-img-wrapper">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtfYDi0rrWcHcJulzaAxYMytlR2Mk-c2GlavnGj6c57kCbm-P8M2fFDmAm0SH_tmtcMp9kNnsx0LOr12Huf5WzeRXWqTVU7Adk-6ak-WDMf3est6MQIJu4rvFPv75ZkuSTE9n-YcLAZLdHvvH3ymbFpKQXN65wwp7hSYVpTYkKRdIfAXzD07_GQ2v443JryHGJYg1eTHZKGwCfc_l5Giu59bzzDWiPbrnVVrs95vmO_jIikBkFIGeeG75_6jaW9Bva7t8Q72-AqHo" alt="Mizo Cuisine">
+                    </div>
+                    <div class="explore-content">
+                        <h4 class="explore-column-title">Mizo Cuisine</h4>
+                        <p class="explore-column-text">Explore local flavors and food experiences.</p>
+                    </div>
+                </a>
+                <a class="explore-column explore-column--safety" href="safety.html">
+                    <div class="explore-img-wrapper explore-img-wrapper--safety">
+                        <span class="material-symbols-outlined explore-safety-icon">health_and_safety</span>
+                    </div>
+                    <div class="explore-content">
+                        <h4 class="explore-column-title">Safety & Emergency</h4>
+                        <p class="explore-column-text">Emergency numbers and practical tips.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+
+    <!-- Hero Section -->
+    <section class="heritage-hero">
+        <div class="heritage-hero-overlay"></div>
+        <div class="section-container heritage-hero-inner">
+            <span class="section-kicker">Culture & Traditions</span>
+            <h1 class="heritage-hero-title">Heritage of Mizoram</h1>
+            <p class="heritage-hero-text">
+                Discover the traditions, festivals, dances, cuisine, and lifestyle that define the identity of Mizoram.
+            </p>
+        </div>
+    </section>
+
+    <!-- Culture Cards -->
+    <section class="heritage-content">
+        <div class="section-container">
+
+            <div class="section-heading">
+                <div class="section-heading-main">
+                    <span class="section-kicker">Explore</span>
+                    <h2 class="section-title">Culture & Traditions</h2>
+                </div>
+            </div>
+
+            <div class="heritage-grid">
+
+                <div class="heritage-card">
+                    <img src="Cultural dance/Chapchar dance.png" class="heritage-img" alt="Traditional Dance">
+                    <h3>Traditional Dance</h3>
+                    <p>Cheraw bamboo dance and other performances are important parts of Mizo festivals and celebrations.</p>
+                </div>
+
+                <div class="heritage-card">
+                    <img src="Festival/chap.png" class="heritage-img" alt="Festivals">
+                    <h3>Festivals</h3>
+                    <p>Chapchar Kut, Mim Kut, and Pawl Kut celebrate harvest and community life throughout the year.</p>
+                </div>
+
+                <div class="heritage-card">
+                    <img src="Lifestyle/Kawnchei.jpeg" class="heritage-img" alt="Lifestyle">
+                    <h3>Lifestyle</h3>
+                    <p>Mizo society values respect, community life, and harmony with nature in daily living.</p>
+                </div>
+
+                <a href="traditionaldress.html" class="heritage-card heritage-card-link">
+                    <img src="cultural dress/Puanchei.png" class="heritage-img" alt="Traditional Dress">
+                    <h3>Traditional Dress</h3>
+                    <p>Explore the rich textile heritage including Puanchei, Pawndum, and ceremonial attire.</p>
+                    <span class="heritage-card-cta">View Collection <span class="material-symbols-outlined">arrow_forward</span></span>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER (Same as your site) ===== -->
+<footer class="site-footer">
+    <div class="footer-orb"></div>
+    
+    <div class="footer-col footer-col--brand">
+        <div class="footer-brand">Visit Mizoram</div>
+        <p class="footer-text">
+            Embracing the Living Tapestry of the North East. Discover a land where culture and nature exist in perfect harmony.
+        </p>
+    </div>
+    
+    <div class="footer-col">
+        <h4 class="footer-heading">Explore</h4>
+        <ul class="footer-list">
+            <li><a class="footer-link" href="#">Cultural Heritage</a></li>
+            <li><a class="footer-link" href="../safety.html">Safety</a></li>
+            <li><a class="footer-link" href="../stays.html">Stay</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-copyright">
+            © 2024 Visit Mizoram.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

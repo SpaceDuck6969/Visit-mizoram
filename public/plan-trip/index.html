@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan Trip AI Chat | Visit Mizoram</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,700;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="chatbot.css" />
+    
+    <script src="../js/mizoram-destinations.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous" defer></script>
+    <script src="../js/plan-trip-map.js" defer></script>
+    <script src="chatbot.js" defer></script>
+    
+    <script src="../js/session.js" defer></script>
+    <script src="../js/navbar-search.js" defer></script>
+</head>
+<body>
+    <div id="auth-wall" style="position: fixed; inset: 0; background: #0a3323; z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center;">
+        <span class="material-symbols-outlined" style="font-size: 4rem; color: #e5d9c5; margin-bottom: 1rem;">lock</span>
+        <h2 style="font-family: 'Noto Serif', serif; color: #e5d9c5; font-size: 2.5rem; margin-bottom: 0.5rem; margin-top: 0;">Restricted Page</h2>
+        <p style="font-family: 'Manrope', sans-serif; font-size: 1.1rem; color: #a3b8b0; margin-bottom: 2rem; max-width: 400px; line-height: 1.6;">This experience is reserved for registered travelers. Please log in to access the AI Trip Planner.</p>
+        
+        <a href="../login.html" style="padding: 1rem 2rem; background: #e5d9c5; color: #0a3323; text-decoration: none; border-radius: 8px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer;">
+            Sign In to Continue
+        </a>
+    </div>
+
+    <header id="main-header" class="site-header">
+        <nav class="site-nav">
+            
+            <a href="../index.html" style="text-decoration: none;">
+                <div class="site-brand">Visit Mizoram</div>
+            </a>
+            
+            <div class="site-nav-links">
+                <a class="top-nav-link" href="../index.html#destinations">Destinations</a>
+                <a class="top-nav-link" href="../guideline.html">Explore</a>
+                <a class="top-nav-link" href="#" style="color: #e5d9c5;">Plan Trip</a>
+                <a class="top-nav-link" href="../stays.html">Stay</a>
+            </div>
+
+            <div class="site-nav-actions" id="auth-container">
+                <button id="back-btn" class="back-btn">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </button>
+                <div class="nav-search-container">
+                    <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                    <button id="nav-search-btn" class="nav-search-btn">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <div id="search-results" class="search-results-dropdown"></div>
+                </div>
+                <a href="../login.html" id="join-btn" class="join-btn" style="display: none; text-decoration: none;">Join</a>
+
+                <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                    <button id="user-dropdown-btn" class="user-dropdown-btn">
+                        <span class="material-symbols-outlined">account_circle</span>
+                        <span id="nav-username">Traveler</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    
+                    <div id="user-dropdown-content" class="user-dropdown-content">
+                        <a href="#" id="logout-btn">
+                            <span class="material-symbols-outlined">logout</span> 
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </nav>
+    </header>
+
+    <div class="plan-page-main">
+        <section class="plan-tools-section" aria-label="Trip tools">
+            <div class="plan-trip-builder plan-trip-builder--studio">
+                <div class="plan-builder-head">
+                    <div class="plan-builder-eyebrow">
+                        <span class="material-symbols-outlined plan-builder-eyebrow-icon" aria-hidden="true">auto_awesome</span>
+                        Intelligent drafting
+                    </div>
+                    <h2>AI trip builder</h2>
+                    <p>Shape your journey in a few taps— we compose a detailed prompt you can edit before sending to the planner.</p>
+                </div>
+
+                <div class="plan-builder-grid">
+                    <div class="plan-field plan-field--duo">
+                        <div class="plan-field-inner">
+                            <label class="plan-label" for="trip-days">
+                                <span class="material-symbols-outlined plan-label-icon" aria-hidden="true">calendar_month</span>
+                                Trip length
+                            </label>
+                            <div class="plan-select-wrap">
+                                <select id="trip-days" class="plan-select">
+                                    <option value="2">2 days</option>
+                                    <option value="3" selected>3 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="7">7 days</option>
+                                    <option value="10">10+ days</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="plan-field-inner">
+                            <label class="plan-label" for="trip-pace">
+                                <span class="material-symbols-outlined plan-label-icon" aria-hidden="true">directions_walk</span>
+                                Daily pace
+                            </label>
+                            <div class="plan-select-wrap">
+                                <select id="trip-pace" class="plan-select">
+                                    <option value="relaxed">Relaxed — slow mornings</option>
+                                    <option value="balanced" selected>Balanced — mix of rest &amp; explore</option>
+                                    <option value="packed">Packed — maximize every day</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-field plan-field--duo">
+                        <div class="plan-field-inner">
+                            <label class="plan-label" for="trip-budget">
+                                <span class="material-symbols-outlined plan-label-icon" aria-hidden="true">payments</span>
+                                Budget style
+                            </label>
+                            <div class="plan-select-wrap">
+                                <select id="trip-budget" class="plan-select">
+                                    <option value="economy">Economy — homestays &amp; shared rides</option>
+                                    <option value="moderate" selected>Moderate — comfortable mix</option>
+                                    <option value="comfortable">Comfortable — private transport where it helps</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="plan-field-inner">
+                            <label class="plan-label" for="trip-party">
+                                <span class="material-symbols-outlined plan-label-icon" aria-hidden="true">groups</span>
+                                Travel party
+                            </label>
+                            <div class="plan-select-wrap">
+                                <select id="trip-party" class="plan-select">
+                                    <option value="a solo traveler">Solo</option>
+                                    <option value="a couple">Couple</option>
+                                    <option value="a family with children">Family with children</option>
+                                    <option value="a small group of friends">Small group of friends</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-field plan-field--full">
+                        <span class="plan-label plan-label--block">
+                            <span class="material-symbols-outlined plan-label-icon" aria-hidden="true">forest</span>
+                            Interests
+                        </span>
+                        <div class="interest-grid" role="group" aria-label="Trip interests">
+                            <label class="interest-pill">
+                                <input type="checkbox" class="trip-interest visually-hidden-input" value="nature hikes" checked />
+                                <span class="interest-pill-ui">Nature &amp; hikes</span>
+                            </label>
+                            <label class="interest-pill">
+                                <input type="checkbox" class="trip-interest visually-hidden-input" value="culture and churches" />
+                                <span class="interest-pill-ui">Culture &amp; churches</span>
+                            </label>
+                            <label class="interest-pill">
+                                <input type="checkbox" class="trip-interest visually-hidden-input" value="food and markets" />
+                                <span class="interest-pill-ui">Food &amp; markets</span>
+                            </label>
+                            <label class="interest-pill">
+                                <input type="checkbox" class="trip-interest visually-hidden-input" value="photography viewpoints" />
+                                <span class="interest-pill-ui">Viewpoints &amp; photo</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-builder-actions">
+                    <button type="button" id="plan-generate-btn" class="plan-primary-btn">
+                        <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
+                        Build prompt for AI
+                    </button>
+                    <button type="button" id="plan-clear-prompt-btn" class="plan-ghost-btn">Clear chat box</button>
+                </div>
+            </div>
+            <div class="plan-map-card">
+                <h2>Destination map</h2>
+                <p class="plan-map-note">OpenStreetMap with key stops. Popups show a heuristic crowd label (not live data).</p>
+                <div id="plan-leaflet-map" role="region" aria-label="Map of Mizoram destinations"></div>
+            </div>
+        </section>
+    </div>
+
+    <main class="chat-layout">
+        <section class="chat-setup chat-setup--elevated">
+            <div class="chat-setup-badge">
+                <span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>
+                Smart Planner
+            </div>
+            <h2>Your Mizo travel co-pilot</h2>
+            <p>Routes, food, permits, stays, and pacing—ask in plain language. Replies stream in as they generate.</p>
+            <label class="plan-label" for="language-select">
+                <span class="material-symbols-outlined plan-label-icon" aria-hidden="true">translate</span>
+                Response language
+            </label>
+            <div class="plan-select-wrap plan-select-wrap--chat">
+                <select id="language-select" class="plan-select">
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Mizo">Mizo</option>
+                    <option value="Bengali">Bengali</option>
+                </select>
+            </div>
+            <p id="status" class="status-text">Initializing...</p>
+        </section>
+
+        <section class="chat-panel chat-panel--elevated">
+            <div class="quick-prompts" id="quick-prompts">
+                <button type="button" class="prompt-chip">Tomorrow weather in Aizawl</button>
+                <button type="button" class="prompt-chip">3-day itinerary avoiding peak crowds</button>
+                <button type="button" class="prompt-chip">Best food in Aizawl and dietary tips</button>
+            </div>
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+            <form id="chat-form" class="chat-form chat-form--advanced">
+                <label for="user-input" class="visually-hidden">Your travel question</label>
+                <div class="chat-input-shell">
+                    <span class="material-symbols-outlined chat-input-icon" aria-hidden="true">edit_note</span>
+                    <textarea id="user-input" rows="3" placeholder="Describe your trip, constraints, or questions about Mizoram…" required></textarea>
+                </div>
+                <button id="send-btn" type="submit" class="chat-send-btn">
+                    Send
+                    <span class="material-symbols-outlined" aria-hidden="true">send</span>
+                </button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

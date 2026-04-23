@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Travel Guidelines | Visit Mizoram</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/guideline.css"/>
+    <script src="js/session.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/planner-widget.js" defer></script>
+    <script src="/js/page-transition.js" defer></script>
+    <script src="/js/navbar-search.js" defer></script>
+</head>
+
+<body>
+    
+<header id="main-header" class="site-header">
+
+    <nav class="site-nav">
+        <a href="index.html"><div class="site-brand">Visit Mizoram</div></a>
+        
+        <div class="site-nav-links">
+            <button id="destinations-trigger" class="nav-dropdown-trigger" type="button">
+                <span class="nav-dropdown-label">Destinations</span>
+                <span id="dest-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+            </button>
+
+            <button id="explore-trigger" class="nav-dropdown-trigger" type="button">
+                <span class="nav-dropdown-label">Explore</span>
+                <span id="explore-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+            </button>
+
+            <a class="top-nav-link" href="/plan-trip/index.html">Plan Trip</a>
+            <a class="top-nav-link" href="stays.html">Stay</a>
+        </div>
+
+        <div class="site-nav-actions" id="auth-container">
+            <div class="nav-search-container">
+                <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                <button id="nav-search-btn" class="nav-search-btn">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <div id="search-results" class="search-results-dropdown"></div>
+            </div>
+            <a href="login.html" id="join-btn" class="join-btn" style="text-decoration: none;">Join</a>
+
+            <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                <button id="user-dropdown-btn" class="user-dropdown-btn">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span id="nav-username">Traveler</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                
+                <div id="user-dropdown-content" class="user-dropdown-content">
+                    <a href="#" id="logout-btn">
+                        <span class="material-symbols-outlined">logout</span> 
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="destinations-menu" class="destinations-menu">
+        <div class="destinations-menu-inner">
+            
+            <div class="destinations-filter-bar">
+                <button class="filter-btn dest-filter-btn" data-filter="hill-stations">Hill stations</button>
+                <button class="filter-btn dest-filter-btn" data-filter="waterfalls">Waterfalls/Lakes</button>
+                <button class="filter-btn dest-filter-btn" data-filter="districts">Districts</button>
+            </div>
+
+            <div class="dest-grid" id="dest-grid">
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/reiek/reiek.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="images/hill-station image/Reiek.jpg" class="dest-card-image" alt="Reiek">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Reiek</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/hmuifang/hmuifang.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="destinations/hmuifang/Hmuifang.jpg" class="dest-card-image" alt="Hmuifang">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Hmuifang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/sakawrhmuituai/sakawrhmuituai.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/destinations/sakawrhmuituai/sakawrr.jpg" class="dest-card-image" alt="Sakawrhmuituai">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Sakawrhmuituai</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/phawngpui/phawngpui.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/images/hill-station image/phawngpui.webp" class="dest-card-image" alt="Phawngpui">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Phawngpui</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/phulpui/phulpui.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/destinations/phulpui/image/phulpui.jpg" class="dest-card-image" alt="phulpui">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Zawlpala Thlantlang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/mawmrang/mawmrang.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="/destinations/mawmrang/Mawmrang.jpg" class="dest-card-image" alt="mawmrang">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Mawmrang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/ngai-tlang/ngai-tlang.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="./images/hill-station image/ngai tlang.jpeg" class="dest-card-image" alt="Ngai Tlang">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Ngai Tlang</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <a href="destinations/sialsuk/sialsuk.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="./images/hill-station image/Sialsuk.jpg" class="dest-card-image" alt="Sialsuk">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Sialsuk</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div>
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="./images/hill-station image/pehlawn.jpeg" class="dest-card-image" alt="pehlawn">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">Pehlawn</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="waterfalls">
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="./images/hill-station image/Hangi.jpeg" class="dest-card-image" alt="Hangi Lunglen Tlang">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">HaASDASDASDlang</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="/destinations/mawmrang/Mawmrang.jpg" class="dest-card-image" alt="mawmrang">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">Mawmrang</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dest-card dest-card-item" data-category="hill-stations">
+                    <div class="dest-card-shell">
+                        <div>
+                            <img src="./images/hill-station image/Hangi.jpeg" class="dest-card-image" alt="Hangi Lunglen Tlang">
+                        </div>
+                        <div class="dest-card-title-wrap">
+                            <h4 class="dest-card-title">HaASDASDASDlang</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div> </div> </div> <div id="explore-menu" class="destinations-menu"> 
+        <div class="destinations-menu-inner">
+            
+
+            
+            <div class="dest-grid">
+                <div class="dest-card">
+                    <a href="/guideline.html">
+                        <div class="dest-card-shell">
+                            <div>
+                                <img src="#" class="dest-card-image" alt="Travel Guideline">
+                            </div>
+                            <div class="dest-card-title-wrap">
+                                <h4 class="dest-card-title">Travel Guideline</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div> </div> </div>
+</header>
+
+<main>
+    <section class="hero">
+            <div class="hero-background">
+                <img class="hero-background-image animate-slow-zoom" data-alt="Traveler exploring the misty mountains of Mizoram respectfully" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg2AgYl7cEkLNGbzemaX48wcVbVUeKCLCojMQU9rF7cOBfKnGbeRYvE-pglN_esF24gxmKvy310qsrDdVBYtbAxbROwxg5Ai3dyyP-F832nWeQbTnatjnv54EJvcqIgRxzKnCdtzDVFXSBN7ooQsdf2qXtmcK7OwpQ09JQHaGI-AC2Fkj2gvJCpGzGvmNg1rfoh1wGRyLyw_YsxwJ8gcOMOQYDPlPmqtOvuM9ezAD7umyknY4499Q099_04QwKALvxlDURTHZoqXE"/>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <span class="hero-kicker animate-fade-in-up">Travel Guidelines</span>
+                    <h1 class="hero-title">
+                        Journey <br/>With Respect.
+                    </h1>
+                    <p class="hero-lede">
+                        To truly experience the soul of Mizoram, immerse yourself in our deeply rooted values. Here is everything you need to know about our local customs, safety, and community norms.
+                    </p>
+                </div>
+            </div>
+    </section>
+
+        <section class="nav-section">
+            <div class="section-container editorial-wrapper">
+                <div class="editorial-header">
+                    <span class="section-kicker">Core Values</span>
+                    <h2 class="section-title">The Spirit of Tlawmngaihna.</h2>
+                    <p class="editorial-lead">At the heart of every interaction in Mizoram lies <strong>Tlawmngaihna</strong>. It’s more than just a word—it’s a living philosophy of hospitality, perseverance, and putting others before yourself, no matter the personal cost.</p>
+                </div>
+                
+                <div class="editorial-grid">
+                    <div class="ed-item ed-item--lead">
+                        <h4 class="ed-title">A Culture of Selfless Service</h4>
+                        <p class="ed-copy">You'll likely notice it in the warmth of the locals. Here, being hospitable and stepping up to help a stranger isn't an obligation—it's simply our way of life. It’s the driving force behind everything we do as a community.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Without Expectation</h4>
+                        <p class="ed-copy">The purest form of this code is acting without waiting for a 'thank you'. It's about doing the right thing just because it's the right thing to do.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Dignity in Labor</h4>
+                        <p class="ed-copy">Leave your titles at the door. In Mizoram, all honest work is deeply respected, creating a wonderfully grounded and equal society.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nav-section" style="background: #f8f5d6;">
+            <div class="section-container editorial-wrapper">
+                <div class="editorial-header">
+                    <span class="section-kicker">Social Norms</span>
+                    <h2 class="section-title">The Power of the YMA.</h2>
+                    <p class="editorial-lead">If you want to understand our social glue, look no further than the <strong>Young Mizo Association (YMA)</strong>. This voluntary group is the absolute heartbeat of our neighborhoods.</p>
+                </div>
+                
+                <div class="editorial-grid">
+                    <div class="ed-item ed-item--lead">
+                        <h4 class="ed-title">The Backbone of Our Society</h4>
+                        <p class="ed-copy">With a branch in almost every corner of the state, this massive volunteer network is always ready to mobilize. They are the ultimate organizers, stepping up to manage local logistics so the government doesn't have to.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Never Walking Alone</h4>
+                        <p class="ed-copy">From setting up vibrant local festivals to managing funerals for free during family tragedies, the YMA ensures no one ever struggles alone.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Modern Guardians</h4>
+                        <p class="ed-copy">They are the quiet caretakers of our culture, fighting for social harmony and ensuring our traditions stay vibrant.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nav-section">
+            <div class="section-container editorial-wrapper">
+                <div class="editorial-header">
+                    <span class="section-kicker">Etiquette & Heritage</span>
+                    <h2 class="section-title">Spaces & Traditions.</h2>
+                    <p class="editorial-lead">Faith and ancestry walk hand in hand here. You'll find a deep reverence for the church seamlessly blending with our vibrant, centuries-old traditions.</p>
+                </div>
+                
+                <div class="editorial-grid">
+                    <div class="ed-item ed-item--lead">
+                        <h4 class="ed-title">The Sacred Sunday Rest</h4>
+                        <p class="ed-copy">Sundays here hit pause. The streets quiet down, shops close their doors, and the state takes a collective breath to rest. It's the perfect day for quiet reflection, and travelers are kindly asked to respect the stillness.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Sunday Best</h4>
+                        <p class="ed-copy">Services are a beautiful sight, with locals dressing up in their finest traditional <em>Puan</em>. If you visit a church, dressing modestly goes a long way.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Living History</h4>
+                        <p class="ed-copy">We love sharing our bamboo dances and harvest celebrations (like Chapchar Kut)—just treat these moments as the living history they are.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nav-section" style="background: #f8f5d6;">
+            <div class="section-container editorial-wrapper">
+                <div class="editorial-header">
+                    <span class="section-kicker">Security & Equality</span>
+                    <h2 class="section-title">A Safe Haven.</h2>
+                    <p class="editorial-lead">Mizoram consistently ranks as one of the safest places for women to travel. It’s a peace of mind that comes from mutual respect, not just policing.</p>
+                </div>
+                
+                <div class="editorial-grid">
+                    <div class="ed-item ed-item--lead">
+                        <h4 class="ed-title">Leading the Local Economy</h4>
+                        <p class="ed-copy">Take a walk through any local market, and you'll see women running the show. From small street stalls to thriving city enterprises, female entrepreneurship is everywhere and highly respected.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Freedom to Explore</h4>
+                        <p class="ed-copy">Whether it's an early hike or a late-night stroll, women move freely and safely here. Our incredibly low crime rate is something we are fiercely proud of.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Mutual Respect</h4>
+                        <p class="ed-copy">Modern education and a tight-knit community mean people look out for each other. It’s a balanced society where equality is lived out daily.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nav-section">
+            <div class="section-container editorial-wrapper">
+                <div class="editorial-header">
+                    <span class="section-kicker">Civic Discipline</span>
+                    <h2 class="section-title">The Silent City.</h2>
+                    <p class="editorial-lead">Navigating Aizawl’s steep, winding roads comes with a pleasant surprise for visitors: an almost unbelievable level of driving etiquette.</p>
+                </div>
+                
+                <div class="editorial-grid">
+                    <div class="ed-item ed-item--lead">
+                        <h4 class="ed-title">Leave the Earplugs Behind</h4>
+                        <p class="ed-copy">You won't hear a symphony of horns here. Honking is heavily frowned upon and reserved only for absolute emergencies. We believe patience is the best soundtrack for a city.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Holding the Line</h4>
+                        <p class="ed-copy">Even during rush hour on narrow mountain ridges, you won't see aggressive overtaking. Vehicles stay patiently in their lanes.</p>
+                    </div>
+                    <div class="ed-item ed-item--support">
+                        <h4 class="ed-title">Civic Pride</h4>
+                        <p class="ed-copy">Everyone waits their turn simply because they respect the people around them, proving that a little patience benefits everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="heritage" style="border-radius: 0;">
+            <div class="section-container editorial-wrapper" style="text-align: center;">
+                <div style="max-width: 52rem; margin: 0 auto;">
+                    <span class="heritage-kicker">The Big Picture</span>
+                    <h2 class="heritage-title">Collective Responsibility.</h2>
+                    <div class="heritage-divider"></div>
+                    
+                    <p class="ed-copy" style="font-size: 1.25rem; margin-top: 3rem; color: #fff;">
+                        When you put all the pieces together, the true beauty of Mizoram isn't just in the rolling hills—it's in how we take care of each other.
+                    </p>
+                    <p class="ed-copy" style="font-size: 1.125rem; margin-top: 1.5rem; color: rgba(255,255,255,0.8);">
+                        Whether it’s drivers waiting patiently without honking, a neighborhood coming together to support a grieving family, or a society that ensures no one is left behind, everything here rests on one belief: we are only as strong as our community. It’s a rare, beautiful balance of modern civic duty and deep-rooted tribal heritage, and we can't wait to share it with you.
+                    </p>
+                </div>
+            </div>
+        </section>
+</main>
+
+    <footer class="site-footer">
+        <div class="footer-orb"></div>
+        
+        <div class="footer-col footer-col--brand">
+            <div class="footer-brand">Visit Mizoram</div>
+            <p class="footer-text">
+                Embracing the Living Tapestry of the North East. Discover a land where culture and nature exist in perfect harmony.
+            </p>
+            <div class="footer-social">
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">public</span></a>
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">alternate_email</span></a>
+                <a class="footer-social-link" href="#"><span class="material-symbols-outlined footer-social-icon">share</span></a>
+            </div>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-list">
+                <li><a class="footer-link" href="#">Cultural Heritage</a></li>
+                <li><a class="footer-link" href="#">Sustainability</a></li>
+                <li><a class="footer-link" href="#">Press Kit</a></li>
+                <li><a class="footer-link" href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">Plan</h4>
+            <ul class="footer-list">
+                <li><a class="footer-link" href="#">Entry Permits</a></li>
+                <li><a class="footer-link" href="#">Travel Guides</a></li>
+                <li><a class="footer-link" href="stays.html">Stay Directory</a></li>
+                <li><a class="footer-link" href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-heading">The Newsletter</h4>
+            <p class="footer-description footer-description--muted">Receive monthly stories from the hills.</p>
+            <div class="footer-newsletter">
+                <input class="footer-input" placeholder="Email Address" type="email"/>
+                <button class="footer-newsletter-btn" type="button">Join</button>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2024 Visit Mizoram. Embracing The Living Tapestry.
+            </div>
+            <div class="footer-legal-links">
+                <a class="footer-legal-link" href="#">Instagram</a>
+                <a class="footer-legal-link" href="#">Twitter</a>
+                <a class="footer-legal-link" href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <button aria-label="Open Smart Planner chatbot" aria-expanded="false" class="fab" id="smart-planner-fab" type="button">
+        <span class="material-symbols-outlined material-symbols-filled fab-icon">smart_toy</span>
+        <div class="fab-tooltip">
+            Open Smart Planner
+        </div>
+    </button>
+
+    <section aria-label="Smart Planner Widget" class="planner-widget" id="planner-widget" aria-hidden="true">
+        <div class="planner-widget-header">
+            <h4 id="planner-widget-title">Smart Planner</h4>
+            <button class="planner-widget-close" id="planner-widget-close" type="button">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="planner-widget-controls">
+            <label for="planner-language">Language</label>
+            <select id="planner-language">
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Mizo">Mizo</option>
+                <option value="Bengali">Bengali</option>
+            </select>
+        </div>
+        <div class="planner-widget-prompts" id="planner-widget-prompts">
+            <button type="button" class="planner-chip">Tomorrow weather in Aizawl</button>
+            <button type="button" class="planner-chip">Top places in Champhai</button>
+            <button type="button" class="planner-chip">Local food recommendations</button>
+        </div>
+        <div class="planner-widget-messages" id="planner-widget-messages" aria-live="polite"></div>
+        <form class="planner-widget-form" id="planner-widget-form">
+            <textarea id="planner-widget-input" placeholder="Ask about Mizoram travel..." rows="2" required></textarea>
+            <button id="planner-widget-send" type="submit">Send</button>
+        </form>
+    </section>
+</body>
+</html>

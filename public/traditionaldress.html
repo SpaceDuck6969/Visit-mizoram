@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Traditional Dress | Visit Mizoram</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/session.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/page-transition.js" defer></script>
+    <script src="js/navbar-search.js" defer></script>
+    <style>
+        :root {
+            --primary: #2d4a3e;
+            --primary-light: #3d5a4e;
+            --accent: #d4a574;
+            --cream: #f5f1e8;
+            --surface: #faf9f6;
+        }
+
+        .td-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            position: relative;
+            padding: 120px 20px 60px;
+        }
+
+        .td-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('cultural dress/Puanchei.png') center/cover;
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+        }
+
+        .td-hero-inner {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .td-hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .td-hero-text {
+            font-size: 1.25rem;
+            color: rgba(245,241,232,0.9);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .td-section {
+            padding: 80px 20px;
+            background: var(--surface);
+        }
+
+        .td-section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .td-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .td-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .td-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .td-card-img-wrap {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .td-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .td-card:hover .td-card-img {
+            transform: scale(1.05);
+        }
+
+        .td-card-content {
+            padding: 1.5rem;
+        }
+
+        .td-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .td-card-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .td-zoom-hint {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(45, 74, 62, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .td-card:hover .td-zoom-hint {
+            opacity: 1;
+        }
+
+        /* Lightbox Modal */
+        .td-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .td-lightbox.active {
+            display: flex;
+        }
+
+        .td-lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .td-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            transition: transform 0.2s;
+        }
+
+        .td-lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        .td-lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.25rem;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 12px 24px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .td-grid {
+                grid-template-columns: 1fr;
+            }
+            .td-card-img-wrap {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="main-header" class="site-header">
+        <nav class="site-nav">
+            <a href="index.html"><div class="site-brand">Visit Mizoram</div></a>
+
+            <div class="site-nav-links">
+                <button id="destinations-trigger" class="nav-dropdown-trigger" type="button">
+                    <span class="nav-dropdown-label">Destinations</span>
+                    <span id="dest-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+                </button>
+
+                <button id="explore-trigger" class="nav-dropdown-trigger" type="button">
+                    <span class="nav-dropdown-label">Explore</span>
+                    <span id="explore-icon" class="material-symbols-outlined nav-dropdown-icon">expand_more</span>
+                </button>
+
+                <a class="top-nav-link" href="plan-trip/index.html">Plan Trip</a>
+                <a class="top-nav-link" href="safety.html">Safety</a>
+                <a class="top-nav-link" href="stays.html">Stay</a>
+            </div>
+
+            <div class="site-nav-actions" id="auth-container">
+                <button id="back-btn" class="back-btn">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </button>
+                <div class="nav-search-container">
+                    <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search...">
+                    <button id="nav-search-btn" class="nav-search-btn">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <div id="search-results" class="search-results-dropdown"></div>
+                </div>
+                <a href="login.html" id="join-btn" class="join-btn" style="text-decoration: none;">Join</a>
+
+                <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                    <button id="user-dropdown-btn" class="user-dropdown-btn">
+                        <span class="material-symbols-outlined">account_circle</span>
+                        <span id="nav-username">Traveler</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+
+                    <div id="user-dropdown-content" class="user-dropdown-content">
+                        <a href="#" id="logout-btn">
+                            <span class="material-symbols-outlined">logout</span>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="destinations-menu" class="destinations-menu">
+            <div class="destinations-menu-inner">
+                <div class="destinations-filter-bar">
+                    <button class="filter-btn dest-filter-btn" data-filter="hill-stations">Hill stations</button>
+                    <button class="filter-btn dest-filter-btn" data-filter="waterfalls">Waterfalls/Lakes</button>
+                    <button class="filter-btn dest-filter-btn" data-filter="districts">Districts</button>
+                </div>
+                <div class="dest-grid" id="dest-grid">
+                    <div class="dest-card dest-card-item" data-category="hill-stations">
+                        <a href="destinations/reiek/reiek.html">
+                            <div class="dest-card-shell">
+                                <div><img src="images/hill-station image/Reiek.jpg" class="dest-card-image" alt="Reiek"></div>
+                                <div class="dest-card-title-wrap"><h4 class="dest-card-title">Reiek</h4></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dest-card dest-card-item" data-category="hill-stations">
+                        <a href="destinations/hmuifang/hmuifang.html">
+                            <div class="dest-card-shell">
+                                <div><img src="destinations/hmuifang/Hmuifang.jpg" class="dest-card-image" alt="Hmuifang"></div>
+                                <div class="dest-card-title-wrap"><h4 class="dest-card-title">Hmuifang</h4></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dest-card dest-card-item" data-category="hill-stations">
+                        <a href="destinations/phawngpui/phawngpui.html">
+                            <div class="dest-card-shell">
+                                <div><img src="images/hill-station image/phawngpui.webp" class="dest-card-image" alt="Phawngpui"></div>
+                                <div class="dest-card-title-wrap"><h4 class="dest-card-title">Phawngpui</h4></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="explore-menu" class="destinations-menu">
+            <div class="destinations-menu-inner explore-menu-inner">
+                <div class="explore-columns">
+                    <a class="explore-column" href="guideline.html">
+                        <div class="explore-img-wrapper">
+                            <img src="images/travel guideline.png" alt="Travel Guideline">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Travel Guideline</h4>
+                            <p class="explore-column-text">Check official travel guidance and practical tips.</p>
+                        </div>
+                    </a>
+                    <a class="explore-column" href="heritage.html">
+                        <div class="explore-img-wrapper">
+                            <img src="cultural dress/Puanchei.png" alt="Cultural and Heritage">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Cultural and Heritage</h4>
+                            <p class="explore-column-text">Discover traditions and heritage stories.</p>
+                        </div>
+                    </a>
+                    <a class="explore-column" href="cuisine.html">
+                        <div class="explore-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtfYDi0rrWcHcJulzaAxYMytlR2Mk-c2GlavnGj6c57kCbm-P8M2fFDmAm0SH_tmtcMp9kNnsx0LOr12Huf5WzeRXWqTVU7Adk-6ak-WDMf3est6MQIJu4rvFPv75ZkuSTE9n-YcLAZLdHvvH3ymbFpKQXN65wwp7hSYVpTYkKRdIfAXzD07_GQ2v443JryHGJYg1eTHZKGwCfc_l5Giu59bzzDWiPbrnVVrs95vmO_jIikBkFIGeeG75_6jaW9Bva7t8Q72-AqHo" alt="Mizo Cuisine">
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Mizo Cuisine</h4>
+                            <p class="explore-column-text">Explore local flavors and food experiences.</p>
+                        </div>
+                    </a>
+                    <a class="explore-column explore-column--safety" href="safety.html">
+                        <div class="explore-img-wrapper explore-img-wrapper--safety">
+                            <span class="material-symbols-outlined explore-safety-icon">health_and_safety</span>
+                        </div>
+                        <div class="explore-content">
+                            <h4 class="explore-column-title">Safety & Emergency</h4>
+                            <p class="explore-column-text">Emergency numbers and practical tips.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="td-hero">
+            <div class="td-hero-inner">
+                <h1 class="td-hero-title">Traditional Dress</h1>
+                <p class="td-hero-text">
+                    Explore the rich textile heritage of Mizoram. Each garment tells a story of tradition, craftsmanship, and cultural identity.
+                </p>
+            </div>
+        </section>
+
+        <section class="td-section">
+            <h2 class="td-section-title">Cultural Attire Collection</h2>
+            <div class="td-grid">
+                <div class="td-card" onclick="openLightbox('cultural dress/Puanchei.png', 'Puanchei')">
+                    <div class="td-card-img-wrap">
+                        <img src="cultural dress/Puanchei.png" class="td-card-img" alt="Puanchei">
+                        <div class="td-zoom-hint">
+                            <span class="material-symbols-outlined">zoom_in</span>
+                            Click to zoom
+                        </div>
+                    </div>
+                    <div class="td-card-content">
+                        <h3 class="td-card-title">Puanchei</h3>
+                        <p class="td-card-desc">The vibrant traditional Mizo dress worn by women during festivals and special occasions. Features intricate handwoven patterns.</p>
+                    </div>
+                </div>
+
+                <div class="td-card" onclick="openLightbox('cultural dress/Pawndum.jpeg', 'Pawndum')">
+                    <div class="td-card-img-wrap">
+                        <img src="cultural dress/Pawndum.jpeg" class="td-card-img" alt="Pawndum">
+                        <div class="td-zoom-hint">
+                            <span class="material-symbols-outlined">zoom_in</span>
+                            Click to zoom
+                        </div>
+                    </div>
+                    <div class="td-card-content">
+                        <h3 class="td-card-title">Pawndum</h3>
+                        <p class="td-card-desc">Traditional handwoven textile with distinctive patterns representing Mizo craftsmanship and artistic heritage.</p>
+                    </div>
+                </div>
+
+                <div class="td-card" onclick="openLightbox('cultural dress/Hmaram.jpeg', 'Hmaram')">
+                    <div class="td-card-img-wrap">
+                        <img src="cultural dress/Hmaram.jpeg" class="td-card-img" alt="Hmaram">
+                        <div class="td-zoom-hint">
+                            <span class="material-symbols-outlined">zoom_in</span>
+                            Click to zoom
+                        </div>
+                    </div>
+                    <div class="td-card-content">
+                        <h3 class="td-card-title">Hmaram</h3>
+                        <p class="td-card-desc">Ceremonial attire showcasing the rich textile heritage and traditional weaving techniques of the Mizo people.</p>
+                    </div>
+                </div>
+
+                <div class="td-card" onclick="openLightbox('cultural dress/Ngotekherh.jpeg', 'Ngotekherh')">
+                    <div class="td-card-img-wrap">
+                        <img src="cultural dress/Ngotekherh.jpeg" class="td-card-img" alt="Ngotekherh">
+                        <div class="td-zoom-hint">
+                            <span class="material-symbols-outlined">zoom_in</span>
+                            Click to zoom
+                        </div>
+                    </div>
+                    <div class="td-card-content">
+                        <h3 class="td-card-title">Ngotekherh</h3>
+                        <p class="td-card-desc">Traditional wrap-around garment representing Mizo cultural identity and worn during important ceremonies.</p>
+                    </div>
+                </div>
+
+                <div class="td-card" onclick="openLightbox('cultural dress/Gankaw leh Thihni Kawr1.png', 'Gankaw leh Thihni Kawr')">
+                    <div class="td-card-img-wrap">
+                        <img src="cultural dress/Gankaw leh Thihni Kawr1.png" class="td-card-img" alt="Gankaw leh Thihni Kawr">
+                        <div class="td-zoom-hint">
+                            <span class="material-symbols-outlined">zoom_in</span>
+                            Click to zoom
+                        </div>
+                    </div>
+                    <div class="td-card-content">
+                        <h3 class="td-card-title">Gankaw leh Thihni Kawr</h3>
+                        <p class="td-card-desc">Traditional men's ceremonial dress featuring intricate designs, patterns, and fine craftsmanship.</p>
+                    </div>
+                </div>
+
+                <div class="td-card" onclick="openLightbox('cultural dress/Thihni Suit Kawr.png', 'Thihni Suit Kawr')">
+                    <div class="td-card-img-wrap">
+                        <img src="cultural dress/Thihni Suit Kawr.png" class="td-card-img" alt="Thihni Suit Kawr">
+                        <div class="td-zoom-hint">
+                            <span class="material-symbols-outlined">zoom_in</span>
+                            Click to zoom
+                        </div>
+                    </div>
+                    <div class="td-card-content">
+                        <h3 class="td-card-title">Thihni Suit Kawr</h3>
+                        <p class="td-card-desc">Elegant formal attire showcasing traditional Mizo tailoring techniques and cultural sophistication.</p>
+                    </div>
+                </div>
+
+                <div class="td-card" onclick="openLightbox('cultural dress/tawlhlohpuan.png', 'Tawlhlohpuan')">
+                    <div class="td-card-img-wrap">
+                        <img src="cultural dress/tawlhlohpuan.png" class="td-card-img" alt="Tawlhlohpuan">
+                        <div class="td-zoom-hint">
+                            <span class="material-symbols-outlined">zoom_in</span>
+                            Click to zoom
+                        </div>
+                    </div>
+                    <div class="td-card-content">
+                        <h3 class="td-card-title">Tawlhlohpuan</h3>
+                        <p class="td-card-desc">Traditional wrap worn by Mizo women, known for its distinctive woven patterns and cultural significance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="td-lightbox" onclick="closeLightbox(event)">
+        <button class="td-lightbox-close" onclick="closeLightboxBtn(event)">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <img id="lightbox-img" class="td-lightbox-img" src="" alt="">
+        <div id="lightbox-caption" class="td-lightbox-caption"></div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-orb"></div>
+        <div class="footer-col footer-col--brand">
+            <div class="footer-brand">Visit Mizoram</div>
+            <p class="footer-text">Embracing the Living Tapestry of the North East.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-list">
+                <li><a class="footer-link" href="heritage.html">Cultural Heritage</a></li>
+                <li><a class="footer-link" href="safety.html">Safety</a></li>
+                <li><a class="footer-link" href="stays.html">Stay</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copyright">© 2024 Visit Mizoram.</div>
+        </div>
+    </footer>
+
+    <script>
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            img.src = src;
+            cap.textContent = caption;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox') {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeLightboxBtn(event) {
+            event.stopPropagation();
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Details | Visit Mizoram</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous"/>
+
+    <script src="js/session.js" defer></script>
+    <script src="js/navbar-search.js" defer></script>
+
+    <style>
+        /* Page Specific Styling */
+        .detail-wrapper { max-width: 1200px; margin: 8rem auto 4rem; padding: 0 2rem; font-family: 'Manrope', sans-serif; }
+        .hotel-hero { position: relative; width: 100%; height: 55vh; min-height: 400px; border-radius: 24px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background-color: #f0f0f0; }
+        .hotel-hero img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s ease-in-out; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.4); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.3s, transform 0.2s; backdrop-filter: blur(4px); }
+        .carousel-btn:hover { background: rgba(0, 0, 0, 0.8); transform: translateY(-50%) scale(1.05); }
+        .prev-btn { left: 1rem; }
+        .next-btn { right: 1rem; }
+        .carousel-dots { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); cursor: pointer; transition: background 0.3s, transform 0.2s; }
+        .dot.active { background: white; transform: scale(1.2); }
+        .hotel-header { margin-bottom: 3rem; border-bottom: 1px solid #eaeaea; padding-bottom: 2rem; }
+        .hotel-header h1 { font-family: 'Noto Serif', serif; font-size: 3rem; color: #1a1a1a; margin-bottom: 0.5rem; }
+        .hotel-meta { display: flex; align-items: center; gap: 1.5rem; color: #555; font-size: 1rem; flex-wrap: wrap; }
+        .meta-item { display: flex; align-items: center; gap: 0.5rem; }
+        .rating-badge { background: #1a1a1a; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 600; }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+        .content-section h3 { font-family: 'Noto Serif', serif; font-size: 1.8rem; margin-bottom: 1rem; color: #1a1a1a; }
+        .hotel-desc { font-size: 1.1rem; line-height: 1.8; color: #444; white-space: pre-wrap; }
+        #map { height: 400px; width: 100%; border-radius: 16px; z-index: 1; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .reviews-container { background: #fdfdfd; padding: 3rem; border-radius: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
+        .reviews-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .review-card { border-bottom: 1px solid #eaeaea; padding: 1.5rem 0; }
+        .review-card:last-child { border-bottom: none; }
+        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+        .review-title { font-weight: 700; font-size: 1.1rem; color: #1a1a1a; }
+        .review-stars { color: #fbbf24; font-weight: bold; }
+        .review-body { color: #555; line-height: 1.6; margin-bottom: 0.5rem; }
+        .review-author { font-size: 0.85rem; color: #888; }
+        .review-form-box { background: #fff; padding: 2rem; border-radius: 16px; border: 1px solid #eaeaea; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333; }
+        .star-rating-input { display: flex; gap: 8px; cursor: pointer; margin-bottom: 10px; }
+        .star-rating-input .star { font-size: 2.5rem; color: #ddd; transition: color 0.2s, transform 0.1s; }
+        .star-rating-input .star:hover { transform: scale(1.1); }
+        .star-rating-input .star.active { color: #fbbf24; font-variation-settings: 'FILL' 1; }
+        .form-control { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 1rem; box-sizing: border-box; }
+        .form-control:focus { outline: none; border-color: #1a1a1a; }
+        textarea.form-control { resize: vertical; min-height: 100px; }
+        .submit-btn { background: #1a1a1a; color: white; border: none; padding: 14px 24px; font-size: 1rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; }
+        .submit-btn:hover { background: #333; }
+        .hidden { display: none !important; }
+        @media (max-width: 900px) { .detail-grid, .reviews-layout { grid-template-columns: 1fr; gap: 2rem; } .hotel-hero { height: 35vh; } .hotel-header h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+    
+<header id="main-header" class="site-header">
+    <nav class="site-nav">
+        <a href="index.html"><div class="site-brand">Visit Mizoram</div></a>
+        <div class="site-nav-links">
+            <a class="top-nav-link" href="plan-trip/index.html">Plan Trip</a>
+            <a class="top-nav-link" href="safety.html">Safety</a>
+            <a class="top-nav-link" href="stays.html">Stay</a>
+        </div>
+        <div class="site-nav-actions" id="auth-container">
+            <a href="login.html" id="join-btn" class="join-btn" style="text-decoration: none;">Join</a>
+            <div id="user-menu-container" class="user-menu-container" style="display: none;">
+                <button id="user-dropdown-btn" class="user-dropdown-btn">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span id="nav-username">Traveler</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div id="user-dropdown-content" class="user-dropdown-content">
+                    <a href="#" id="logout-btn"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <main class="detail-wrapper">
+        <div class="hotel-hero">
+            <img id="detail-image" src="/uploads/default.jpg" alt="Hotel Image">
+            <button id="prev-img" class="carousel-btn prev-btn hidden" aria-label="Previous image"><span class="material-symbols-outlined">chevron_left</span></button>
+            <button id="next-img" class="carousel-btn next-btn hidden" aria-label="Next image"><span class="material-symbols-outlined">chevron_right</span></button>
+            <div id="carousel-dots" class="carousel-dots"></div>
+        </div>
+
+        <div class="hotel-header">
+            <h1 id="detail-name">Loading...</h1>
+            <div class="hotel-meta">
+                <span class="meta-item rating-badge">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem;">star</span>
+                    <span id="detail-rating">New</span>
+                </span>
+                <span class="meta-item"><span class="material-symbols-outlined">location_on</span><span id="detail-address">Fetching location...</span></span>
+                <span class="meta-item"><span class="material-symbols-outlined">call</span><span id="detail-contact">Fetching contact...</span></span>
+            </div>
+        </div>
+        
+        <div class="detail-grid">
+            <div class="content-section">
+                <h3>About this stay</h3>
+                <p id="detail-desc" class="hotel-desc">Loading details...</p>
+            </div>
+            <div class="content-section">
+                <h3>Location</h3>
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <div class="reviews-container">
+            <h3 style="font-family: 'Noto Serif', serif; font-size: 2rem; margin-bottom: 2rem;">Guest Reviews</h3>
+            
+            <div class="reviews-layout">
+                <div id="reviews-list">
+                    <p style="color: #888;">Loading reviews...</p>
+                </div>
+
+                <div>
+                    <div id="review-form-container" class="review-form-box hidden">
+                        <h4 style="margin-top: 0; margin-bottom: 1.5rem; font-size: 1.2rem;">Share Your Experience</h4>
+                        <form id="submit-review-form">
+                            <div class="form-group">
+                                <label>Your Rating</label>
+                                <div class="star-rating-input" id="star-rating-input">
+                                    <span class="material-symbols-outlined star" data-value="1">star</span>
+                                    <span class="material-symbols-outlined star" data-value="2">star</span>
+                                    <span class="material-symbols-outlined star" data-value="3">star</span>
+                                    <span class="material-symbols-outlined star" data-value="4">star</span>
+                                    <span class="material-symbols-outlined star" data-value="5">star</span>
+                                </div>
+                                <input type="hidden" id="review-rating" value="5" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" id="review-title" class="form-control" placeholder="Summarize your stay" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Comment</label>
+                                <textarea id="review-comment" class="form-control" placeholder="What did you love? What could be better?" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit Review</button>
+                        </form>
+                    </div>
+                    
+                    <div id="already-reviewed-msg" class="review-form-box hidden" style="text-align: center; color: #555;">
+                        <span class="material-symbols-outlined" style="font-size: 3rem; color: #10b981;">check_circle</span>
+                        <p style="font-weight: bold; margin-top: 1rem;">You have already reviewed this stay.</p>
+                        <p style="font-size: 0.9rem;">Thank you for your feedback!</p>
+                    </div>
+                    
+                    <div id="login-to-review-msg" class="review-form-box hidden" style="text-align: center;">
+                        <span class="material-symbols-outlined" style="font-size: 3rem; color: #ccc;">rate_review</span>
+                        <p style="font-weight: bold; margin-top: 1rem; margin-bottom: 1.5rem;">Want to share your experience?</p>
+                        <a href="login.html" class="submit-btn" style="display: inline-block; text-decoration: none; box-sizing: border-box;">Log in to review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-bottom">
+        <div class="footer-copyright">© 2024 Visit Mizoram. Embracing The Living Tapestry.</div>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+    <script src="js/hotel-detail.js"></script>
+</body>
+</html>

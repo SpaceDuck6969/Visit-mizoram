@@ -1,0 +1,689 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+
+/* =========================
+   RESET & BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f8f9fb;
+    color: #333;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+.top-nav {
+    width: 100%;
+    background: linear-gradient(to bottom, #111, #1c1c1c);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #2a2a2a;
+    height: 72px;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* LOGO */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.logo-area img {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* MAIN MENU */
+.menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: #fff;
+}
+
+/* =========================
+   MEGA DROPDOWN (CLICK)
+========================= */
+.nav-item.dropdown.open > .mega-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    z-index: 999;
+}
+
+.mega-dropdown {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 72px);
+
+    background: #161616;
+    padding: 40px 60px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    overflow-y: auto;
+
+    /* Hidden state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    pointer-events: none;
+
+    transition: all 0.35s ease;
+    z-index: 999;
+}
+
+/* Hide scrollbar in mega-dropdown */
+.mega-dropdown::-webkit-scrollbar {
+    display: none;
+}
+
+.mega-dropdown {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+/* TABS */
+.mega-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.mega-tabs .tab {
+    padding: 10px 18px;
+    border-radius: 25px;
+    border: none;
+    background: #252525;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.mega-tabs .tab:hover {
+    background: #333;
+}
+
+.mega-tabs .tab.active {
+    background: #fff;
+    color: #000;
+}
+
+/* TAB CONTENT GRID */
+.tab-content {
+    display: none;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+    gap: 30px;
+}
+
+.tab-content.active {
+    display: grid;
+}
+
+/* MEGA CARDS */
+.mega-card {
+    background: #1f1f1f;
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.mega-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.mega-card span {
+    display: block;
+    padding: 14px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.mega-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ICONS */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* =========================
+   HERO (UNCHANGED)
+========================= */
+.hero {
+    position: relative;
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)),
+        url("image.png") center/cover no-repeat;
+}
+
+.hero-content {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 64px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.destination-title {
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* HERO META & FACT STRIP (Inspired by Incredible India layout) */
+.hero-meta {
+    position: absolute;
+    left: 40px;
+    bottom: 110px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hero-tag {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(15, 23, 42, 0.76);
+    border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.hero-tag.secondary {
+    background: rgba(22, 163, 74, 0.9);
+    border-color: rgba(74, 222, 128, 0.9);
+}
+
+.hero-fact-strip {
+    margin-top: -32px;
+    padding: 0 10vw 30px;
+}
+
+.hero-facts {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.hero-fact-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 14px 18px 16px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.hero-fact-card h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.hero-fact-card p {
+    font-size: 14px;
+    color: #111827;
+}
+
+.btn {
+    position: absolute;
+    top: 80%;
+    left: 45%;
+    padding: 14px 32px;
+    background: linear-gradient(45deg,#ff4d6d,#ff7a00);
+    border-radius: 30px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================
+   SECTIONS & CARDS
+========================= */
+.section-title {
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* IMAGE GALLERY */
+.destination-gallery {
+    padding: 70px 10vw 40px;
+    background: #f2f4ff;
+}
+
+.gallery-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.gallery-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.4s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 18px 18px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.0));
+    color: #f9fafb;
+}
+
+.gallery-overlay h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.gallery-overlay p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.gallery-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 55px rgba(15, 23, 42, 0.18);
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+.destination-story,
+.destination-guide {
+    padding: 80px 18vw;
+    background: #f8f9fb;
+}
+
+.destination-story {
+    border-bottom: 1px solid #e2e6f0;
+}
+
+.story-inner,
+.guide-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-kicker {
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8c8fa3;
+    margin-bottom: 16px;
+}
+
+.destination-story h3,
+.destination-guide h3 {
+    font-size: 22px;
+    margin-top: 32px;
+    margin-bottom: 10px;
+    color: #1b1f3b;
+}
+
+.destination-story p {
+    line-height: 1.8;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* STORY BLOCKS WITH SIDE IMAGES */
+.story-block {
+    display: flex;
+    align-items: stretch;
+    gap: 28px;
+    margin-top: 36px;
+}
+
+.story-block.image-left {
+    flex-direction: row-reverse;
+}
+
+.story-text {
+    flex: 2;
+}
+
+.story-media {
+    flex: 1.2;
+}
+
+.story-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+/* IMMERSIVE EXPERIENCE STRIP */
+.destination-experiences {
+    padding: 70px 10vw 80px;
+    background: radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 40%, #e5e7eb 100%);
+}
+
+.experiences-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 26px;
+    align-items: stretch;
+}
+
+.experience-main-card {
+    position: relative;
+    border-radius: 26px;
+    overflow: hidden;
+    min-height: 320px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+}
+
+.experience-main-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.04);
+    filter: brightness(0.8);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.experience-main-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 26px 26px 22px;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.1));
+    color: #e5e7eb;
+}
+
+.experience-main-overlay h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.experience-main-overlay p {
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 420px;
+}
+
+.experience-main-card:hover img {
+    transform: scale(1.09);
+    filter: brightness(0.95);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.experience-card {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.experience-card img {
+    width: 100%;
+    height: 90px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.experience-body h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #111827;
+}
+
+.experience-body p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.destination-guide {
+    background: #f2f4ff;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.guide-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 22px 22px 20px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.guide-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.guide-card p,
+.guide-card ul {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #475569;
+}
+
+.guide-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.guide-card ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+}
+
+.guide-card ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #6366f1;
+}
+
+.guide-itinerary h4 {
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    color: #111827;
+}
+
+.guide-footer h3 {
+    margin-bottom: 10px;
+}
+
+.guide-footer p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4b5563;
+    max-width: 900px;
+}
+
+.guide-cta {
+    margin-top: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.guide-cta span {
+    color: #6366f1;
+}
+
+/* Lists without bullets for certain story sections */
+.plain-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0 12px;
+}
+
+.plain-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 4px;
+}
+
+.plain-list li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #6366f1;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: #0f3460;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 900px) {
+    .menu {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .story-block,
+    .story-block.image-left {
+        flex-direction: column;
+    }
+
+    .story-media {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 42px;
+    }
+}

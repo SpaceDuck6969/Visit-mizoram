@@ -1,0 +1,375 @@
+/* Mizo Cuisine Page Styles */
+
+.cuisine-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0a3323 0%, #1a5c3f 50%, #0a3323 100%);
+    overflow: hidden;
+}
+
+.cuisine-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=1920') center/cover;
+    opacity: 0.3;
+}
+
+.cuisine-hero-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+}
+
+.cuisine-hero-title {
+    font-family: "Noto Serif", serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem 0;
+    line-height: 1.1;
+}
+
+.cuisine-hero-text {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Food Categories */
+.cuisine-categories {
+    padding: 4rem 0;
+    background: #f8f5d6;
+}
+
+.cuisine-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.cuisine-category-card {
+    background: #fff;
+    border-radius: 1.5rem 0.5rem 1.5rem 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.cuisine-category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.cuisine-category-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+}
+
+.cuisine-category-content {
+    padding: 1.5rem;
+}
+
+.cuisine-category-title {
+    font-family: "Noto Serif", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0a3323;
+    margin: 0 0 0.5rem 0;
+}
+
+.cuisine-category-desc {
+    color: #414844;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Signature Dishes */
+.signature-dishes {
+    padding: 6rem 0;
+    background: #fff;
+}
+
+.dishes-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.dish-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #fefbdb;
+    border-radius: 1rem;
+    border: 1px solid rgba(10, 51, 35, 0.1);
+    transition: all 300ms ease;
+}
+
+.dish-card:hover {
+    background: #fff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dish-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+
+.dish-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dish-name {
+    font-family: "Noto Serif", serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0a3323;
+    margin: 0 0 0.5rem 0;
+}
+
+.dish-name-mizo {
+    font-size: 0.875rem;
+    color: #51652a;
+    font-style: italic;
+    margin: 0 0 0.75rem 0;
+}
+
+.dish-desc {
+    font-size: 0.9rem;
+    color: #414844;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Food Experience Section */
+.food-experience {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #0a3323 0%, #1a5c3f 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.food-experience::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>') repeat;
+    background-size: 100px 100px;
+    opacity: 0.5;
+}
+
+.food-experience-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.experience-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 300ms ease;
+}
+
+.experience-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+}
+
+.experience-icon {
+    font-size: 3rem;
+    color: #d3eca2;
+    margin-bottom: 1rem;
+}
+
+.experience-title {
+    font-family: "Noto Serif", serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+}
+
+.experience-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Ingredients Section */
+.ingredients-section {
+    padding: 6rem 0;
+    background: #f8f5d6;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.ingredient-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 300ms ease;
+}
+
+.ingredient-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-icon {
+    width: 80px;
+    height: 80px;
+    background: #0a3323;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.ingredient-icon .material-symbols-outlined {
+    font-size: 2.5rem;
+    color: #d3eca2;
+}
+
+.ingredient-name {
+    font-family: "Noto Serif", serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0a3323;
+    margin: 0 0 0.5rem 0;
+}
+
+.ingredient-desc {
+    font-size: 0.85rem;
+    color: #414844;
+    margin: 0;
+}
+
+/* Dining Etiquette */
+.etiquette-section {
+    padding: 6rem 0;
+    background: #fff;
+}
+
+.etiquette-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.etiquette-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #fefbdb;
+    border-radius: 1rem;
+    border-left: 4px solid #51652a;
+}
+
+.etiquette-number {
+    width: 32px;
+    height: 32px;
+    background: #51652a;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.etiquette-text {
+    font-size: 0.95rem;
+    color: #414844;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CTA Section */
+.cuisine-cta {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #51652a 0%, #0a3323 100%);
+    text-align: center;
+}
+
+.cuisine-cta-title {
+    font-family: "Noto Serif", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem 0;
+}
+
+.cuisine-cta-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 2rem 0;
+}
+
+.cuisine-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: #fff;
+    color: #0a3323;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: all 300ms ease;
+}
+
+.cuisine-cta-btn:hover {
+    background: #d3eca2;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cuisine-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .dish-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .dish-img {
+        margin: 0 auto;
+    }
+}
